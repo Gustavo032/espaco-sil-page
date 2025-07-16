@@ -22,60 +22,65 @@ import { BeforeAfterGallery } from "@/components/sections/BeforeAfterGallery";
 import { HairstyleSimulator } from "@/components/sections/HairstyleSimulator";
 
 // Data objects e constantes
-const services = [
+import type { FunctionComponent } from "react";
+import type { ServiceType } from "@/components/sections/Services";
+
+const DummyIcon: FunctionComponent<{ className?: string }> = () => null;
+
+const services: ServiceType[] = [
   {
     id: "progressiva",
     name: "Progressiva",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Cabelos lisos e sedosos por mais tempo",
     details: "Tratamento que deixa os cabelos lisos, sedosos e livres de frizz por até 4 meses. Utilizamos produtos de alta qualidade que respeitam a estrutura capilar."
   },
   {
     id: "selagem",
     name: "Selagem",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Proteção e brilho intenso",
     details: "Procedimento que sela a cutícula do cabelo, proporcionando brilho intenso, maciez e proteção contra agentes externos. Ideal para cabelos danificados."
   },
   {
     id: "botox",
     name: "Botox Capilar",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Restauração profunda dos fios",
     details: "Tratamento reparador que reconstrói a fibra capilar, devolvendo vida, brilho e movimento aos cabelos. Reduz volume e controla o frizz."
   },
   {
     id: "coloracao",
     name: "Coloração",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Cores vibrantes e duradouras",
     details: "Mudança de cor com produtos profissionais que garantem resultado duradouro e cabelos saudáveis. Desde tons naturais até as cores mais ousadas."
   },
   {
     id: "cronograma",
     name: "Cronograma Capilar",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Tratamento personalizado",
     details: "Programa de tratamento personalizado que alterna hidratação, nutrição e reconstrução de acordo com as necessidades específicas do seu cabelo."
   },
   {
     id: "corte",
     name: "Corte",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Cortes modernos e clássicos",
     details: "Cortes modernos e clássicos, adaptados ao seu formato de rosto e estilo pessoal. Desde cortes femininos delicados até estilos mais arrojados."
   },
   {
     id: "sobrancelha",
     name: "Sobrancelha",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Design perfeito para seu rosto",
     details: "Design de sobrancelhas personalizado para valorizar seu olhar. Técnicas de depilação, modelagem e correção para um resultado natural e harmonioso."
   },
   {
     id: "manicure",
     name: "Manicure e Pedicure",
-    icon: () => null,
+    icon: DummyIcon,
     description: "Cuidado completo para mãos e pés",
     details: "Cuidado completo para mãos e pés, incluindo limpeza, hidratação, corte e esmaltação. Deixamos suas unhas sempre impecáveis."
   }
@@ -599,8 +604,8 @@ const personalizedReminders = {
   }
 };
 
-export default function Home() {
-  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
+const Home = () => {
+  const [selectedService, setSelectedService] = useState<ServiceType | null>(null);
   const [darkMode, setDarkMode] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [likedServices, setLikedServices] = useState<string[]>([]);
@@ -693,7 +698,7 @@ export default function Home() {
     });
   };
 
-  const shareService = (service: typeof services[0]) => {
+  const shareService = (service: ServiceType) => {
     if (navigator.share) {
       navigator.share({
         title: `${service.name} - Espaço Sil`,
@@ -745,9 +750,11 @@ export default function Home() {
       />
 
       <Hero />
-
-      <Services 
-        onServiceSelect={setSelectedService}
+      <Services
+        services={services}
+        onServiceSelect={(service: ServiceType) => {
+          setSelectedService(service);
+        }}
         likedServices={likedServices}
         toggleLikeService={toggleLikeService}
         shareService={shareService}
@@ -787,9 +794,6 @@ export default function Home() {
       <ContactFormModal
         isOpen={showContactForm}
         onClose={() => setShowContactForm(false)}
-        contactForm={contactForm}
-        setContactForm={setContactForm}
-        handleContactSubmit={handleContactSubmit}
       />
 
       <BackToTop 
@@ -798,4 +802,6 @@ export default function Home() {
       />
     </div>
   );
-}
+};
+
+export default Home;

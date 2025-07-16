@@ -21,9 +21,23 @@ const testimonials = [
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
   }
 ];
+type Testimonial = {
+  name: string;
+  text: string;
+  image: string;
+};
 
-export function Testimonials() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+type TestimonialsProps = {
+  currentTestimonial: number;
+  setCurrentTestimonial: React.Dispatch<React.SetStateAction<number>>;
+  testimonials: Testimonial[];
+};
+
+export function Testimonials({
+  currentTestimonial,
+  setCurrentTestimonial,
+  testimonials,
+}: TestimonialsProps) {
 
   // Auto-rotate testimonials
   useEffect(() => {
@@ -31,7 +45,7 @@ export function Testimonials() {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [setCurrentTestimonial, testimonials.length]);
 
   return (
     <section className="py-20 bg-gray-50 dark:bg-gray-900">

@@ -19,7 +19,15 @@ import {
   Share2
 } from "lucide-react";
 
-const services = [
+export type ServiceType = {
+  id: string;
+  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  description: string;
+  details: string;
+};
+
+const services: ServiceType[] = [
   {
     id: "progressiva",
     name: "Progressiva",
@@ -77,11 +85,13 @@ const services = [
     details: "Cuidado completo para mãos e pés, incluindo limpeza, hidratação, corte e esmaltação. Deixamos suas unhas sempre impecáveis."
   }
 ];
-
-interface ServicesProps {
-  onServiceSelect: (service: typeof services[0]) => void;
-}
-
+export type ServicesProps = {
+  services: ServiceType[];
+  onServiceSelect: (service: ServiceType) => void;
+  likedServices: string[];
+  toggleLikeService: (serviceId: string) => void;
+  shareService: (service: ServiceType) => void;
+};
 export function Services({ onServiceSelect }: ServicesProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterCategory, setFilterCategory] = useState("all");
