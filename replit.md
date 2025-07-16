@@ -1,0 +1,107 @@
+# replit.md
+
+## Overview
+
+This is a React landing page application for "Espaço Sil, a Cabeleireira" (a beauty salon). The project is built with a modern tech stack including React, TypeScript, Tailwind CSS, and shadcn/ui components. It features a responsive design with gradient styling and smooth scrolling navigation.
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
+
+## System Architecture
+
+### Frontend Architecture
+- **Framework**: React 18 with TypeScript
+- **Build Tool**: Vite for fast development and optimized builds
+- **Routing**: Wouter for lightweight client-side routing
+- **Styling**: Tailwind CSS with custom CSS variables for theming
+- **UI Components**: shadcn/ui component library built on Radix UI primitives
+- **State Management**: React Query (@tanstack/react-query) for server state management
+- **Forms**: React Hook Form with Zod validation resolvers
+
+### Backend Architecture
+- **Runtime**: Node.js with Express.js server
+- **Language**: TypeScript with ES modules
+- **Database**: PostgreSQL with Drizzle ORM
+- **Database Provider**: Neon Database (@neondatabase/serverless)
+- **Session Management**: PostgreSQL-based sessions with connect-pg-simple
+
+### Design System
+- **Component Library**: shadcn/ui with "new-york" style variant
+- **Color Scheme**: Custom purple gradient theme with neutral base colors
+- **Typography**: Poppins and Inter fonts from Google Fonts
+- **Responsive Design**: Mobile-first approach with Tailwind breakpoints
+
+## Key Components
+
+### Frontend Structure
+- `client/src/App.tsx` - Main application component with routing setup
+- `client/src/pages/home.tsx` - Landing page with hero section, services, and contact information
+- `client/src/pages/not-found.tsx` - 404 error page
+- `client/src/components/ui/` - Reusable UI components from shadcn/ui
+- `client/src/hooks/` - Custom React hooks for mobile detection and toast notifications
+- `client/src/lib/` - Utility functions and query client configuration
+
+### Backend Structure
+- `server/index.ts` - Express server setup with middleware and error handling
+- `server/routes.ts` - API route definitions (currently minimal)
+- `server/storage.ts` - Data access layer with in-memory storage implementation
+- `server/vite.ts` - Vite integration for development server
+
+### Shared Components
+- `shared/schema.ts` - Database schema definitions using Drizzle ORM and Zod validation
+
+## Data Flow
+
+### Client-Side Data Management
+- React Query handles server state caching and synchronization
+- Local state managed through React hooks (useState, useEffect)
+- Form state handled by React Hook Form with Zod validation
+- Toast notifications for user feedback
+
+### Server Communication
+- RESTful API endpoints prefixed with `/api`
+- JSON request/response format
+- Session-based authentication ready (infrastructure in place)
+- Database queries through Drizzle ORM
+
+### Database Schema
+- Basic user table with id, username, and password fields
+- PostgreSQL with Drizzle migrations support
+- Schema validation with Zod for type safety
+
+## External Dependencies
+
+### Core Dependencies
+- **React Ecosystem**: React 18, React DOM, React Query
+- **Routing**: Wouter for lightweight routing
+- **Styling**: Tailwind CSS, PostCSS, Autoprefixer
+- **UI Components**: Complete shadcn/ui suite with Radix UI primitives
+- **Database**: Drizzle ORM, Neon Database serverless driver
+- **Server**: Express.js, session management
+- **Development**: Vite, TypeScript, ESBuild
+
+### Utility Libraries
+- **Date Handling**: date-fns for date formatting
+- **Class Management**: clsx and class-variance-authority for conditional styling
+- **Carousel**: Embla Carousel for image/content sliders
+- **Icons**: Lucide React for consistent iconography
+
+## Deployment Strategy
+
+### Build Process
+- Frontend: Vite builds optimized static assets to `dist/public`
+- Backend: ESBuild bundles server code to `dist/index.js`
+- Database: Drizzle migrations in `./migrations` directory
+
+### Environment Configuration
+- Database connection via `DATABASE_URL` environment variable
+- Development mode with hot module replacement
+- Production build with optimized assets and server bundle
+
+### Runtime Requirements
+- Node.js environment for server execution
+- PostgreSQL database (configured for Neon Database)
+- Static file serving for frontend assets
+
+The application is designed as a static landing page with minimal backend requirements, making it suitable for deployment on platforms like Vercel, Netlify, or traditional hosting providers.
