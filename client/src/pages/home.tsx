@@ -291,44 +291,177 @@ const appointmentReminders = [
   }
 ];
 
-const hairCareCalculator = {
-  calculateNextAppointment: (lastDate: Date, serviceType: string) => {
-    const intervals: { [key: string]: number } = {
-      'progressiva': 120, // 4 meses
-      'coloracao': 35, // 5 semanas
-      'corte': 45, // 6-7 semanas
-      'hidratacao': 15, // 2 semanas
-      'sobrancelha': 20, // 3 semanas
-      'manicure': 14 // 2 semanas
-    };
-    
-    const days = intervals[serviceType] || 30;
-    const nextDate = new Date(lastDate);
-    nextDate.setDate(nextDate.getDate() + days);
-    return nextDate;
-  },
-  
-  calculateHairGrowth: (weeks: number) => {
-    const averageGrowthPerWeek = 0.35; // cm per week
-    return (weeks * averageGrowthPerWeek).toFixed(1);
-  },
-  
-  recommendSchedule: (hairType: string, chemicalTreatment: boolean) => {
-    if (chemicalTreatment) {
-      return {
-        hydration: "Semanal",
-        nutrition: "Quinzenal", 
-        reconstruction: "Mensal",
-        note: "Cabelos com química precisam de mais cuidados"
-      };
-    } else {
-      return {
-        hydration: "Quinzenal",
-        nutrition: "Semanal",
-        reconstruction: "Mensal",
-        note: "Mantenha a rotina para cabelos saudáveis"
-      };
+const hairstyleSimulator = {
+  faceShapes: [
+    {
+      id: "oval",
+      name: "Oval",
+      description: "Formato equilibrado, combina com a maioria dos cortes",
+      characteristics: ["Testa e queixo proporcionais", "Maçãs do rosto mais largas"]
+    },
+    {
+      id: "redondo",
+      name: "Redondo",
+      description: "Largura e altura similares, bochechas mais cheias",
+      characteristics: ["Queixo arredondado", "Testa mais larga"]
+    },
+    {
+      id: "quadrado",
+      name: "Quadrado",
+      description: "Ângulos bem definidos na mandíbula",
+      characteristics: ["Testa, bochechas e mandíbula com largura similar", "Linhas angulares"]
+    },
+    {
+      id: "triangular",
+      name: "Triangular",
+      description: "Queixo mais estreito que a testa",
+      characteristics: ["Testa mais larga", "Queixo pontiagudo"]
+    },
+    {
+      id: "coração",
+      name: "Coração",
+      description: "Testa larga e queixo estreito",
+      characteristics: ["Testa proeminente", "Queixo delicado"]
+    },
+    {
+      id: "alongado",
+      name: "Alongado",
+      description: "Altura maior que a largura",
+      characteristics: ["Rosto mais comprido", "Testa alta"]
     }
+  ],
+
+  hairstyles: {
+    oval: [
+      {
+        name: "Bob Clássico",
+        image: "https://images.unsplash.com/photo-1594824985091-f6c0c8ce1bcc?w=300&h=300&fit=crop",
+        description: "Corte na altura do queixo, versátil e elegante",
+        difficulty: "Fácil",
+        maintenance: "Baixa"
+      },
+      {
+        name: "Long Bob (Lob)",
+        image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&h=300&fit=crop",
+        description: "Comprimento até os ombros, moderno e sofisticado",
+        difficulty: "Fácil",
+        maintenance: "Baixa"
+      },
+      {
+        name: "Pixie Cut",
+        image: "https://images.unsplash.com/photo-1616683693867-8fa0e472faf5?w=300&h=300&fit=crop",
+        description: "Corte curtinho, prático e estiloso",
+        difficulty: "Médio",
+        maintenance: "Alta"
+      }
+    ],
+    redondo: [
+      {
+        name: "Corte em Camadas",
+        image: "https://images.unsplash.com/photo-1605980607089-67de6f5e8b8c?w=300&h=300&fit=crop",
+        description: "Camadas longas que alongam o rosto",
+        difficulty: "Médio",
+        maintenance: "Média"
+      },
+      {
+        name: "Franja Lateral",
+        image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&h=300&fit=crop",
+        description: "Franja de lado que afina o rosto",
+        difficulty: "Fácil",
+        maintenance: "Média"
+      },
+      {
+        name: "Cabelo Longo Liso",
+        image: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=300&h=300&fit=crop",
+        description: "Comprimento longo com efeito alongador",
+        difficulty: "Fácil",
+        maintenance: "Baixa"
+      }
+    ],
+    quadrado: [
+      {
+        name: "Ondas Suaves",
+        image: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=300&h=300&fit=crop",
+        description: "Ondas que suavizam os ângulos",
+        difficulty: "Médio",
+        maintenance: "Média"
+      },
+      {
+        name: "Bob Assimétrico",
+        image: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=300&h=300&fit=crop",
+        description: "Corte irregular que quebra a simetria",
+        difficulty: "Difícil",
+        maintenance: "Alta"
+      },
+      {
+        name: "Franja Longa",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop",
+        description: "Franja que cobre a testa parcialmente",
+        difficulty: "Fácil",
+        maintenance: "Média"
+      }
+    ],
+    triangular: [
+      {
+        name: "Volume na Base",
+        image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=300&h=300&fit=crop",
+        description: "Corte que adiciona volume na parte inferior",
+        difficulty: "Médio",
+        maintenance: "Média"
+      },
+      {
+        name: "Bob Graduado",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop",
+        description: "Mais volume embaixo, equilibra as proporções",
+        difficulty: "Médio",
+        maintenance: "Média"
+      }
+    ],
+    coração: [
+      {
+        name: "Franja Cheia",
+        image: "https://images.unsplash.com/photo-1494790108755-2616b112b4df?w=300&h=300&fit=crop",
+        description: "Franja que diminui a testa visualmente",
+        difficulty: "Fácil",
+        maintenance: "Alta"
+      },
+      {
+        name: "Ondas Volumosas",
+        image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=300&h=300&fit=crop",
+        description: "Volume que equilibra a parte inferior",
+        difficulty: "Médio",
+        maintenance: "Média"
+      }
+    ],
+    alongado: [
+      {
+        name: "Bob com Franja",
+        image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&h=300&fit=crop",
+        description: "Corte que diminui o comprimento visual",
+        difficulty: "Fácil",
+        maintenance: "Média"
+      },
+      {
+        name: "Ondas na Altura dos Ombros",
+        image: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=300&h=300&fit=crop",
+        description: "Adiciona largura visual ao rosto",
+        difficulty: "Médio",
+        maintenance: "Média"
+      }
+    ]
+  },
+
+  getRecommendations: (faceShape: string, hairLength: string, lifestyle: string) => {
+    const baseStyles = hairstyleSimulator.hairstyles[faceShape as keyof typeof hairstyleSimulator.hairstyles] || [];
+    
+    let filtered = baseStyles.filter(style => {
+      if (hairLength === "curto" && (style.name.includes("Long") || style.name.includes("Longo"))) return false;
+      if (hairLength === "longo" && style.name.includes("Pixie")) return false;
+      if (lifestyle === "pratico" && style.maintenance === "Alta") return false;
+      return true;
+    });
+
+    return filtered.length > 0 ? filtered : baseStyles.slice(0, 2);
   }
 };
 
@@ -519,7 +652,7 @@ export default function Home() {
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null);
   const [savedGuides, setSavedGuides] = useState<string[]>([]);
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
-  const [showCalculator, setShowCalculator] = useState(false);
+  const [showHairstyleSimulator, setShowHairstyleSimulator] = useState(false);
   const [showVirtualConsult, setShowVirtualConsult] = useState(false);
   const [consultAnswers, setConsultAnswers] = useState<{ [key: string]: string }>({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -529,14 +662,14 @@ export default function Home() {
   const [showSeasonalTips, setShowSeasonalTips] = useState(false);
   const [userReminders, setUserReminders] = useState<any[]>([]);
   const [showReminderForm, setShowReminderForm] = useState(false);
-  const [calculatorType, setCalculatorType] = useState<'appointment' | 'growth' | 'schedule'>('appointment');
-  const [calculatorInputs, setCalculatorInputs] = useState({
-    lastAppointment: '',
-    serviceType: 'corte',
-    weeks: 4,
-    hairType: 'normal',
-    hasChemical: false
+  const [selectedFaceShape, setSelectedFaceShape] = useState<string>('');
+  const [simulatorInputs, setSimulatorInputs] = useState({
+    faceShape: '',
+    hairLength: 'medio',
+    lifestyle: 'equilibrado',
+    currentStyle: ''
   });
+  const [simulatorResults, setSimulatorResults] = useState<any[]>([]);
   const { toast } = useToast();
 
   // Auto-rotate testimonials
@@ -725,31 +858,28 @@ export default function Home() {
     setConsultAnswers({});
   };
 
-  const handleCalculatorSubmit = () => {
-    let result = '';
-    
-    switch (calculatorType) {
-      case 'appointment':
-        if (calculatorInputs.lastAppointment) {
-          const lastDate = new Date(calculatorInputs.lastAppointment);
-          const nextDate = hairCareCalculator.calculateNextAppointment(lastDate, calculatorInputs.serviceType);
-          result = `Próximo ${calculatorInputs.serviceType}: ${nextDate.toLocaleDateString('pt-BR')}`;
-        }
-        break;
-      case 'growth':
-        const growth = hairCareCalculator.calculateHairGrowth(calculatorInputs.weeks);
-        result = `Em ${calculatorInputs.weeks} semanas seu cabelo crescerá aproximadamente ${growth}cm`;
-        break;
-      case 'schedule':
-        const schedule = hairCareCalculator.recommendSchedule(calculatorInputs.hairType, calculatorInputs.hasChemical);
-        result = `Hidratação: ${schedule.hydration}, Nutrição: ${schedule.nutrition}, Reconstrução: ${schedule.reconstruction}. ${schedule.note}`;
-        break;
+  const handleSimulatorSubmit = () => {
+    if (!simulatorInputs.faceShape) {
+      toast({
+        title: "Formato do rosto necessário",
+        description: "Por favor, selecione seu formato de rosto primeiro.",
+        variant: "destructive",
+      });
+      return;
     }
+
+    const recommendations = hairstyleSimulator.getRecommendations(
+      simulatorInputs.faceShape,
+      simulatorInputs.hairLength,
+      simulatorInputs.lifestyle
+    );
+    
+    setSimulatorResults(recommendations);
     
     toast({
-      title: "Resultado da Calculadora",
-      description: result,
-      duration: 8000,
+      title: "Penteados Recomendados!",
+      description: `Encontramos ${recommendations.length} estilos perfeitos para você!`,
+      duration: 5000,
     });
   };
 
@@ -1088,15 +1218,15 @@ Espaço Sil - Sua beleza é nossa arte
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Hair Calculator */}
+            {/* Hairstyle Simulator */}
             <Card 
               className="fade-in hover:shadow-xl transition-all duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 group"
-              onClick={() => setShowCalculator(true)}
+              onClick={() => setShowHairstyleSimulator(true)}
             >
               <CardContent className="p-6 text-center">
-                <Calculator className="text-3xl text-blue-600 mb-4 mx-auto group-hover:scale-110 transition-transform" />
-                <h3 className="text-lg font-semibold mb-2 dark:text-white">Calculadora Capilar</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Calcule crescimento, próximos agendamentos e cronogramas</p>
+                <Smile className="text-3xl text-blue-600 mb-4 mx-auto group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-semibold mb-2 dark:text-white">Simulador de Penteados</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Descubra o penteado ideal para seu formato de rosto</p>
               </CardContent>
             </Card>
 
@@ -1703,112 +1833,165 @@ Espaço Sil - Sua beleza é nossa arte
         </div>
       </footer>
 
-      {/* Calculator Modal */}
+      {/* Hairstyle Simulator Modal */}
       <Modal
-        isOpen={showCalculator}
-        onClose={() => setShowCalculator(false)}
-        title="Calculadora Capilar"
+        isOpen={showHairstyleSimulator}
+        onClose={() => {
+          setShowHairstyleSimulator(false);
+          setSimulatorResults([]);
+          setSimulatorInputs({
+            faceShape: '',
+            hairLength: 'medio',
+            lifestyle: 'equilibrado',
+            currentStyle: ''
+          });
+        }}
+        title="Simulador de Penteados"
       >
         <div className="space-y-6">
-          <div className="flex space-x-2">
-            <Button
-              variant={calculatorType === 'appointment' ? 'default' : 'outline'}
-              onClick={() => setCalculatorType('appointment')}
-              className="flex-1"
-            >
-              <Calendar className="h-4 w-4 mr-2" />
-              Próximo Agendamento
-            </Button>
-            <Button
-              variant={calculatorType === 'growth' ? 'default' : 'outline'}
-              onClick={() => setCalculatorType('growth')}
-              className="flex-1"
-            >
-              <TrendingUp className="h-4 w-4 mr-2" />
-              Crescimento
-            </Button>
-            <Button
-              variant={calculatorType === 'schedule' ? 'default' : 'outline'}
-              onClick={() => setCalculatorType('schedule')}
-              className="flex-1"
-            >
-              <Clock className="h-4 w-4 mr-2" />
-              Cronograma
-            </Button>
-          </div>
-
-          {calculatorType === 'appointment' && (
-            <div className="space-y-4">
+          {simulatorResults.length === 0 ? (
+            <>
+              {/* Face Shape Selection */}
               <div>
-                <label className="block text-sm font-medium mb-2">Último agendamento:</label>
-                <Input
-                  type="date"
-                  value={calculatorInputs.lastAppointment}
-                  onChange={(e) => setCalculatorInputs({...calculatorInputs, lastAppointment: e.target.value})}
-                />
+                <label className="block text-sm font-medium mb-3">Qual é o formato do seu rosto?</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {hairstyleSimulator.faceShapes.map((shape) => (
+                    <div
+                      key={shape.id}
+                      className={`p-3 border rounded-lg cursor-pointer transition-all ${
+                        simulatorInputs.faceShape === shape.id
+                          ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20'
+                          : 'border-gray-200 dark:border-gray-700 hover:border-purple-300'
+                      }`}
+                      onClick={() => setSimulatorInputs({...simulatorInputs, faceShape: shape.id})}
+                    >
+                      <h4 className="font-semibold text-sm dark:text-white">{shape.name}</h4>
+                      <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">{shape.description}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              {/* Hair Length */}
               <div>
-                <label className="block text-sm font-medium mb-2">Tipo de serviço:</label>
+                <label className="block text-sm font-medium mb-2">Comprimento desejado:</label>
                 <select
-                  value={calculatorInputs.serviceType}
-                  onChange={(e) => setCalculatorInputs({...calculatorInputs, serviceType: e.target.value})}
+                  value={simulatorInputs.hairLength}
+                  onChange={(e) => setSimulatorInputs({...simulatorInputs, hairLength: e.target.value})}
                   className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-600"
                 >
-                  <option value="corte">Corte</option>
-                  <option value="coloracao">Coloração</option>
-                  <option value="progressiva">Progressiva</option>
-                  <option value="hidratacao">Hidratação</option>
-                  <option value="sobrancelha">Sobrancelha</option>
-                  <option value="manicure">Manicure</option>
+                  <option value="curto">Curto</option>
+                  <option value="medio">Médio</option>
+                  <option value="longo">Longo</option>
+                  <option value="qualquer">Qualquer um</option>
                 </select>
               </div>
-            </div>
-          )}
 
-          {calculatorType === 'growth' && (
-            <div>
-              <label className="block text-sm font-medium mb-2">Quantas semanas?</label>
-              <Input
-                type="number"
-                min="1"
-                max="52"
-                value={calculatorInputs.weeks}
-                onChange={(e) => setCalculatorInputs({...calculatorInputs, weeks: parseInt(e.target.value)})}
-              />
-            </div>
-          )}
-
-          {calculatorType === 'schedule' && (
-            <div className="space-y-4">
+              {/* Lifestyle */}
               <div>
-                <label className="block text-sm font-medium mb-2">Tipo de cabelo:</label>
+                <label className="block text-sm font-medium mb-2">Seu estilo de vida:</label>
                 <select
-                  value={calculatorInputs.hairType}
-                  onChange={(e) => setCalculatorInputs({...calculatorInputs, hairType: e.target.value})}
+                  value={simulatorInputs.lifestyle}
+                  onChange={(e) => setSimulatorInputs({...simulatorInputs, lifestyle: e.target.value})}
                   className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-600"
                 >
-                  <option value="normal">Normal</option>
-                  <option value="oleoso">Oleoso</option>
-                  <option value="seco">Seco</option>
-                  <option value="misto">Misto</option>
+                  <option value="pratico">Prático (pouco tempo para cuidados)</option>
+                  <option value="equilibrado">Equilibrado (cuidados moderados)</option>
+                  <option value="dedicado">Dedicado (tempo para styling diário)</option>
                 </select>
               </div>
-              <div className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  id="hasChemical"
-                  checked={calculatorInputs.hasChemical}
-                  onChange={(e) => setCalculatorInputs({...calculatorInputs, hasChemical: e.target.checked})}
-                />
-                <label htmlFor="hasChemical" className="text-sm">Fez química recentemente</label>
+
+              {/* Face Shape Info */}
+              {simulatorInputs.faceShape && (
+                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                  {(() => {
+                    const shape = hairstyleSimulator.faceShapes.find(s => s.id === simulatorInputs.faceShape);
+                    return shape ? (
+                      <div>
+                        <h4 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">
+                          Rosto {shape.name}
+                        </h4>
+                        <p className="text-sm text-blue-700 dark:text-blue-300 mb-2">{shape.description}</p>
+                        <div className="text-xs text-blue-600 dark:text-blue-400">
+                          <strong>Características:</strong>
+                          <ul className="list-disc list-inside mt-1">
+                            {shape.characteristics.map((char, index) => (
+                              <li key={index}>{char}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null;
+                  })()}
+                </div>
+              )}
+
+              <Button onClick={handleSimulatorSubmit} className="w-full">
+                <Smile className="h-4 w-4 mr-2" />
+                Ver Penteados Recomendados
+              </Button>
+            </>
+          ) : (
+            /* Results */
+            <div className="space-y-6">
+              <div className="text-center">
+                <h3 className="text-lg font-semibold dark:text-white mb-2">Seus Penteados Ideais</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Baseado no seu formato de rosto {simulatorInputs.faceShape}
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {simulatorResults.map((style, index) => (
+                  <Card key={index} className="dark:bg-gray-800 dark:border-gray-700">
+                    <CardContent className="p-4">
+                      <div className="flex space-x-4">
+                        <img
+                          src={style.image}
+                          alt={style.name}
+                          className="w-20 h-20 rounded-lg object-cover"
+                        />
+                        <div className="flex-1">
+                          <h4 className="font-semibold dark:text-white">{style.name}</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{style.description}</p>
+                          <div className="flex space-x-2">
+                            <Badge variant="outline" className="text-xs">
+                              {style.difficulty}
+                            </Badge>
+                            <Badge variant="secondary" className="text-xs">
+                              Manutenção {style.maintenance}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              <div className="flex space-x-3">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setSimulatorResults([]);
+                  }}
+                  className="flex-1"
+                >
+                  <RefreshCw className="h-4 w-4 mr-2" />
+                  Simular Novamente
+                </Button>
+                <Button
+                  asChild
+                  className="flex-1"
+                >
+                  <a href="https://agenda.codematch.com.br/dashboard" target="_blank" rel="noopener noreferrer">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    Agendar Corte
+                  </a>
+                </Button>
               </div>
             </div>
           )}
-
-          <Button onClick={handleCalculatorSubmit} className="w-full">
-            <Calculator className="h-4 w-4 mr-2" />
-            Calcular
-          </Button>
         </div>
       </Modal>
 
