@@ -2287,7 +2287,7 @@ Espaço Sil - Sua beleza é nossa arte
         title={selectedGuide?.title || ""}
       >
         {selectedGuide && (
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="flex items-center space-x-4">
               <selectedGuide.icon className="text-3xl text-purple-600" />
               <div>
@@ -2297,32 +2297,32 @@ Espaço Sil - Sua beleza é nossa arte
             </div>
             
             <div>
-              <h4 className="font-semibold text-gray-800 dark:text-white mb-3 flex items-center">
+              <h4 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center">
                 <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
                 Passo a Passo
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {selectedGuide.content.steps.map((step, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold flex-shrink-0">
+                  <li key={index} className="flex items-start space-x-2">
+                    <span className="bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold flex-shrink-0 mt-0.5">
                       {index + 1}
                     </span>
-                    <span className="text-gray-700 dark:text-gray-300">{step}</span>
+                    <span className="text-gray-700 dark:text-gray-300 text-sm">{step}</span>
                   </li>
                 ))}
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold text-gray-800 dark:text-white mb-3 flex items-center">
+              <h4 className="font-semibold text-gray-800 dark:text-white mb-2 flex items-center">
                 <Lightbulb className="mr-2 h-5 w-5 text-yellow-500" />
                 Dicas Importantes
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 {selectedGuide.content.tips.map((tip, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="text-yellow-500 mt-1">•</span>
-                    <span className="text-gray-700 dark:text-gray-300">{tip}</span>
+                  <li key={index} className="flex items-start space-x-2">
+                    <span className="text-yellow-500 mt-1 text-sm">•</span>
+                    <span className="text-gray-700 dark:text-gray-300 text-sm">{tip}</span>
                   </li>
                 ))}
               </ul>
