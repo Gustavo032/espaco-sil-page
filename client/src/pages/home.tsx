@@ -5,125 +5,75 @@ import { useToast } from "@/hooks/use-toast";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
+import { About } from "@/components/sections/About";
+import { BusinessHours } from "@/components/sections/BusinessHours";
+import { Location } from "@/components/sections/Location";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
+import { CallToAction } from "@/components/sections/CallToAction";
 import { Footer } from "@/components/sections/Footer";
 import { ServiceModal } from "@/components/modals/ServiceModal";
+import { ContactFormModal } from "@/components/modals/ContactFormModal";
 import { PromotionBanner } from "@/components/common/PromotionBanner";
 import { BackToTop } from "@/components/common/BackToTop";
-
-// Import dos componentes completos que ainda não foram separados
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Modal } from "@/components/ui/modal";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { 
-  Sparkles, 
-  Leaf, 
-  Palette, 
-  Clock, 
-  Calendar,
-  Award,
-  ChevronLeft,
-  ChevronRight,
-  Star,
-  Heart,
-  Share2,
-  MessageSquare,
-  Mail,
-  Sun,
-  Moon,
-  Search,
-  Filter,
-  ArrowUp,
-  Gift,
-  Users,
-  Zap,
-  BookOpen,
-  Lightbulb,
-  Shield,
-  CheckCircle,
-  AlertCircle,
-  Info,
-  PlayCircle,
-  FileText,
-  Calculator,
-  Timer,
-  Droplets,
-  Thermometer,
-  Wind,
-  Smile,
-  Target,
-  TrendingUp,
-  Camera,
-  Download,
-  ExternalLink,
-  Bookmark,
-  RefreshCw,
-  Activity,
-  MapPin,
-  Phone,
-  Instagram
-} from "lucide-react";
 
 // Data objects e constantes
 const services = [
   {
     id: "progressiva",
     name: "Progressiva",
-    icon: Sparkles,
+    icon: () => null,
     description: "Cabelos lisos e sedosos por mais tempo",
     details: "Tratamento que deixa os cabelos lisos, sedosos e livres de frizz por até 4 meses. Utilizamos produtos de alta qualidade que respeitam a estrutura capilar."
   },
   {
     id: "selagem",
     name: "Selagem",
-    icon: Sparkles,
+    icon: () => null,
     description: "Proteção e brilho intenso",
     details: "Procedimento que sela a cutícula do cabelo, proporcionando brilho intenso, maciez e proteção contra agentes externos. Ideal para cabelos danificados."
   },
   {
     id: "botox",
     name: "Botox Capilar",
-    icon: Leaf,
+    icon: () => null,
     description: "Restauração profunda dos fios",
     details: "Tratamento reparador que reconstrói a fibra capilar, devolvendo vida, brilho e movimento aos cabelos. Reduz volume e controla o frizz."
   },
   {
     id: "coloracao",
     name: "Coloração",
-    icon: Palette,
+    icon: () => null,
     description: "Cores vibrantes e duradouras",
     details: "Mudança de cor com produtos profissionais que garantem resultado duradouro e cabelos saudáveis. Desde tons naturais até as cores mais ousadas."
   },
   {
     id: "cronograma",
     name: "Cronograma Capilar",
-    icon: Clock,
+    icon: () => null,
     description: "Tratamento personalizado",
     details: "Programa de tratamento personalizado que alterna hidratação, nutrição e reconstrução de acordo com as necessidades específicas do seu cabelo."
   },
   {
     id: "corte",
     name: "Corte",
-    icon: Sparkles,
+    icon: () => null,
     description: "Cortes modernos e clássicos",
-    details: "Procedimento que sela a cutícula do cabelo, proporcionando brilho intenso, maciez e proteção contra agentes externos. Ideal para cabelos danificados."
+    details: "Cortes modernos e clássicos, adaptados ao seu formato de rosto e estilo pessoal. Desde cortes femininos delicados até estilos mais arrojados."
   },
   {
     id: "sobrancelha",
     name: "Sobrancelha",
-    icon: Sparkles,
-    description: "Proteção e brilho intenso",
-    details: "Procedimento que sela a cutícula do cabelo, proporcionando brilho intenso, maciez e proteção contra agentes externos. Ideal para cabelos danificados."
+    icon: () => null,
+    description: "Design perfeito para seu rosto",
+    details: "Design de sobrancelhas personalizado para valorizar seu olhar. Técnicas de depilação, modelagem e correção para um resultado natural e harmonioso."
   },
   {
     id: "manicure",
     name: "Manicure e Pedicure",
-    icon: Sparkles,
-    description: "Proteção e brilho intenso",
-    details: "Procedimento que sela a cutícula do cabelo, proporcionando brilho intenso, maciez e proteção contra agentes externos. Ideal para cabelos danificados."
+    icon: () => null,
+    description: "Cuidado completo para mãos e pés",
+    details: "Cuidado completo para mãos e pés, incluindo limpeza, hidratação, corte e esmaltação. Deixamos suas unhas sempre impecáveis."
   }
 ];
 
@@ -150,7 +100,7 @@ const hairCareGuides = [
     id: "hidratacao",
     title: "Cronograma de Hidratação",
     description: "Aprenda a criar um cronograma personalizado para seu tipo de cabelo",
-    icon: Droplets,
+    icon: () => null,
     content: {
       steps: [
         "Identifique seu tipo de cabelo (oleoso, misto, seco)",
@@ -171,7 +121,7 @@ const hairCareGuides = [
     id: "pos-progressiva",
     title: "Cuidados Pós-Progressiva",
     description: "Dicas essenciais para manter sua progressiva por mais tempo",
-    icon: Shield,
+    icon: () => null,
     content: {
       steps: [
         "Aguarde 72h antes de lavar o cabelo",
@@ -192,7 +142,7 @@ const hairCareGuides = [
     id: "crescimento",
     title: "Estimular Crescimento",
     description: "Técnicas naturais para acelerar o crescimento capilar",
-    icon: TrendingUp,
+    icon: () => null,
     content: {
       steps: [
         "Massageie o couro cabeludo diariamente",
@@ -213,7 +163,7 @@ const hairCareGuides = [
     id: "protecao-solar",
     title: "Proteção Solar Capilar",
     description: "Como proteger seus cabelos dos danos do sol",
-    icon: Sun,
+    icon: () => null,
     content: {
       steps: [
         "Use produtos com proteção UV",
@@ -285,17 +235,17 @@ const faqData = [
 
 const appointmentReminders = [
   {
-    icon: Clock,
+    icon: () => null,
     title: "Lembrete de Agendamento",
     description: "Mantenha seus tratamentos em dia"
   },
   {
-    icon: Sparkles,
+    icon: () => null,
     title: "Cronograma Capilar",
     description: "Sua próxima hidratação está prevista para:"
   },
   {
-    icon: Calendar,
+    icon: () => null,
     title: "Retoque de Cor",
     description: "Recomendamos retoque a cada 30-45 dias"
   }
@@ -536,7 +486,7 @@ const virtualConsultation = {
 const seasonalTips = [
   {
     season: "Verão",
-    icon: Sun,
+    icon: () => null,
     tips: [
       "Use protetor solar capilar",
       "Hidrate mais frequentemente",
@@ -547,7 +497,7 @@ const seasonalTips = [
   },
   {
     season: "Inverno", 
-    icon: Wind,
+    icon: () => null,
     tips: [
       "Intensifique a nutrição",
       "Use óleos capilares",
@@ -562,22 +512,22 @@ const hairEmergencyKit = [
   {
     problem: "Cabelo muito oleoso",
     solution: "Shampoo seco caseiro: amido de milho + cacau em pó",
-    icon: AlertCircle
+    icon: () => null
   },
   {
     problem: "Frizz descontrolado", 
     solution: "Misture um pouco de creme de pentear com água",
-    icon: Zap
+    icon: () => null
   },
   {
     problem: "Pontas duplas",
     solution: "Torça pequenas mechas e corte os fios que saem",
-    icon: Sparkles
+    icon: () => null
   },
   {
     problem: "Caspa emergencial",
     solution: "Massageie couro cabeludo com óleo de coco morno",
-    icon: Sparkles
+    icon: () => null
   }
 ];
 
@@ -647,14 +597,14 @@ const personalizedReminders = {
 
 export default function Home() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [likedServices, setLikedServices] = useState<string[]>([]);
-  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
   const [showContactForm, setShowContactForm] = useState(false);
   const [showPromotion, setShowPromotion] = useState(true);
   const { toast } = useToast();
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
 
   // Auto-rotate testimonials
   useEffect(() => {
@@ -792,209 +742,24 @@ export default function Home() {
 
       <Hero />
 
-      <Services onServiceSelect={setSelectedService} likedServices={likedServices} toggleLikeService={toggleLikeService} shareService={shareService} />
+      <Services 
+        onServiceSelect={setSelectedService}
+        likedServices={likedServices}
+        toggleLikeService={toggleLikeService}
+        shareService={shareService}
+      />
 
-      {/* About Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2 fade-in">
-              <img 
-                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                alt="Profissional cabeleireira trabalhando" 
-                className="rounded-2xl shadow-xl w-full h-auto"
-              />
-            </div>
-            <div className="lg:w-1/2 fade-in">
-              <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-6">Sobre o Espaço Sil</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                Com anos de experiência no universo da beleza, Sil criou um espaço único onde cada cliente 
-                é tratado com carinho e profissionalismo. Especializamos em técnicas modernas e produtos 
-                de alta qualidade para garantir os melhores resultados.
-              </p>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                Nosso diferencial está na atenção personalizada e no cuidado com cada detalhe, 
-                sempre buscando realçar a beleza natural de cada pessoa.
-              </p>
-              <div className="flex items-center space-x-4">
-                <Award className="text-purple-600 text-2xl" />
-                <span className="text-gray-700 dark:text-gray-300">Profissional certificada com mais de 5 anos de experiência</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <About />
 
-      {/* Business Hours */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center fade-in">
-            <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-12">Horários de Atendimento</h2>
+      <BusinessHours />
 
-            <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
-              <CardContent className="p-8">
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700">
-                    <span className="font-semibold text-gray-700 dark:text-gray-300">Segunda-feira</span>
-                    <span className="text-gray-500 dark:text-gray-400">Fechado</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700">
-                    <span className="font-semibold text-gray-700 dark:text-gray-300">Terça-feira</span>
-                    <span className="text-purple-600 font-semibold">10:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700">
-                    <span className="font-semibold text-gray-700 dark:text-gray-300">Quarta-feira</span>
-                    <span className="text-purple-600 font-semibold">10:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700">
-                    <span className="font-semibold text-gray-700 dark:text-gray-300">Quinta-feira</span>
-                    <span className="text-purple-600 font-semibold">10:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700">
-                    <span className="font-semibold text-gray-700 dark:text-gray-300">Sexta-feira</span>
-                    <span className="text-purple-600 font-semibold">10:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3 border-b border-gray-100 dark:border-gray-700">
-                    <span className="font-semibold text-gray-700 dark:text-gray-300">Sábado</span>
-                    <span className="text-purple-600 font-semibold">10:00 - 18:00</span>
-                  </div>
-                  <div className="flex justify-between items-center py-3">
-                    <span className="font-semibold text-gray-700 dark:text-gray-300">Domingo</span>
-                    <span className="text-purple-600 font-semibold">13:00 - 16:30</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <Location />
 
-      {/* Location */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center fade-in">
-            <h2 className="text-4xl font-bold text-gray-800 mb-12">Localização</h2>
-
-            <Card className="shadow-lg">
-              <CardContent className="p-8">
-                <div className="flex items-center justify-center mb-6">
-                  <MapPin className="text-purple-600 text-3xl mr-3" />
-                  <div className="text-left">
-                    <h3 className="text-xl font-semibold text-gray-800">Endereço</h3>
-                    <p className="text-gray-600">R. Doze de Setembro, 328 - Jardim Bela Vista, Itapevi - SP</p>
-                  </div>
-                </div>
-
-                <Button 
-                  asChild
-                  className="secondary-gradient text-white hover:opacity-90 px-6 py-3 rounded-full"
-                >
-                  <a 
-                    href="https://maps.google.com/?q=R. Doze de Setembro, 328 - Jardim Bela Vista, Itapevi - SP" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    <MapPin className="mr-2 h-4 w-4" />
-                    Ver no mapa
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 fade-in">
-            <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">Depoimentos</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">O que nossas clientes dizem sobre nós</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="relative overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0">
-                    <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
-                      <CardContent className="p-8 text-center">
-                        <img 
-                          src={testimonial.image} 
-                          alt={`${testimonial.name} - Cliente satisfeita`} 
-                          className="w-20 h-20 rounded-full mx-auto mb-6 object-cover border-4 border-purple-200 dark:border-purple-700"
-                        />
-                        <div className="flex justify-center mb-4">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                          ))}
-                        </div>
-                        <p className="text-lg text-gray-700 dark:text-gray-300 mb-4 italic">"{testimonial.text}"</p>
-                        <h4 className="font-semibold text-purple-600 dark:text-purple-400">{testimonial.name}</h4>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </div>
-
-              {/* Navigation Controls */}
-              <div className="flex justify-center items-center mt-8 space-x-4">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                  className="hover:bg-purple-100 dark:hover:bg-purple-900"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </Button>
-
-                <div className="flex space-x-2">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        index === currentTestimonial ? 'bg-purple-600' : 'bg-gray-300 dark:bg-gray-600'
-                      }`}
-                      onClick={() => setCurrentTestimonial(index)}
-                    />
-                  ))}
-                </div>
-
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)}
-                  className="hover:bg-purple-100 dark:hover:bg-purple-900"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Testimonials currentTestimonial={currentTestimonial} setCurrentTestimonial={setCurrentTestimonial} testimonials={testimonials}/>
 
       <Contact onShowContactForm={() => setShowContactForm(true)} />
 
-      {/* CTA Section */}
-      <section id="agendamento" className="py-20 primary-gradient text-white">
-        <div className="container mx-auto px-4 text-center fade-in">
-          <h2 className="text-4xl font-bold mb-6">Pronta para transformar sua beleza?</h2>
-          <p className="text-xl mb-8 opacity-90">Agende seu horário agora mesmo e descubra o seu melhor visual</p>
-          <Button 
-            asChild
-            className="bg-white text-purple-800 hover:bg-gray-100 font-semibold px-8 py-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
-          >
-            <a href="https://agenda.codematch.com.br/dashboard" target="_blank" rel="noopener noreferrer">
-              <Calendar className="mr-2 h-5 w-5" />
-              Agendar Agora
-            </a>
-          </Button>
-        </div>
-      </section>
+      <CallToAction />
 
       <Footer />
 
@@ -1007,58 +772,13 @@ export default function Home() {
         onShare={shareService}
       />
 
-      {/* Contact Form Modal */}
-      <Modal
+      <ContactFormModal
         isOpen={showContactForm}
         onClose={() => setShowContactForm(false)}
-        title="Enviar Mensagem"
-      >
-        <form onSubmit={handleContactSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Nome
-            </label>
-            <Input
-              id="name"
-              type="text"
-              value={contactForm.name}
-              onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
-              placeholder="Seu nome"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Email
-            </label>
-            <Input
-              id="email"
-              type="email"
-              value={contactForm.email}
-              onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
-              placeholder="seu@email.com"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Mensagem
-            </label>
-            <Textarea
-              id="message"
-              value={contactForm.message}
-              onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
-              placeholder="Sua mensagem..."
-              rows={4}
-              required
-            />
-          </div>
-          <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white">
-            <Mail className="mr-2 h-4 w-4" />
-            Enviar Mensagem
-          </Button>
-        </form>
-      </Modal>
+        contactForm={contactForm}
+        setContactForm={setContactForm}
+        handleContactSubmit={handleContactSubmit}
+      />
 
       <BackToTop 
         show={showBackToTop} 
