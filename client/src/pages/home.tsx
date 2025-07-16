@@ -16,6 +16,10 @@ import { ServiceModal } from "@/components/modals/ServiceModal";
 import { ContactFormModal } from "@/components/modals/ContactFormModal";
 import { PromotionBanner } from "@/components/common/PromotionBanner";
 import { BackToTop } from "@/components/common/BackToTop";
+import { InteractiveTools } from "@/components/sections/InteractiveTools";
+import { FAQ } from "@/components/sections/FAQ";
+import { BeforeAfterGallery } from "@/components/sections/BeforeAfterGallery";
+import { HairstyleSimulator } from "@/components/sections/HairstyleSimulator";
 
 // Data objects e constantes
 const services = [
@@ -756,6 +760,14 @@ export default function Home() {
       <Location />
 
       <Testimonials currentTestimonial={currentTestimonial} setCurrentTestimonial={setCurrentTestimonial} testimonials={testimonials}/>
+
+      <InteractiveTools />
+
+      <BeforeAfterGallery />
+
+      <HairstyleSimulator />
+
+      <FAQ />
 
       <Contact onShowContactForm={() => setShowContactForm(true)} />
 

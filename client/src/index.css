@@ -274,6 +274,128 @@
   .gradient-text-purple {
     background: linear-gradient(135deg, #4a148c, #9575cd);
     -webkit-background-clip: text;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .face-shape-selector {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .face-shape-selector:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hairstyle-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hairstyle-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .hairstyle-card:hover::before {
+    left: 100%;
+  }
+  
+  .tutorial-step {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-left: 4px solid #7c3aed;
+    transition: all 0.3s ease;
+  }
+  
+  .tutorial-step:hover {
+    background: linear-gradient(135deg, #e9ecef, #dee2e6);
+  }
+  
+  .emergency-kit-card {
+    border-left: 4px solid #ef4444;
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+    transition: all 0.3s ease;
+  }
+  
+  .emergency-kit-card:hover {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    transform: translateX(4px);
+  }
+  
+  .seasonal-tip-card {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #3b82f6;
+    transition: all 0.3s ease;
+  }
+  
+  .seasonal-tip-card:hover {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+  }
+  
+  .compatibility-bar {
+    background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+    border-radius: 10px;
+    height: 8px;
+  }
+  
+  .before-after-divider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    z-index: 10;
+  }
+  
+  .gallery-overlay {
+    background: linear-gradient(45deg, rgba(124, 58, 237, 0.8), rgba(219, 39, 119, 0.8));
+    transition: opacity 0.3s ease;
+  }
+  
+  .faq-item {
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item:hover {
+    border-left-color: #7c3aed;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  }
+  
+  .step-indicator {
+    background: linear-gradient(135deg, #7c3aed, #db2777);
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+  }
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }

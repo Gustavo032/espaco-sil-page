@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Scissors, Sun, Moon } from "lucide-react";
@@ -20,7 +19,7 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
             <Scissors className="text-white text-2xl" />
             <h1 className="text-white text-xl font-bold">Espaço Sil</h1>
           </div>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
             <button 
@@ -48,6 +47,30 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
               Resultados
             </button>
             <button 
+              onClick={() => scrollToSection('depoimentos')}
+              className="text-white hover:text-purple-300 transition-colors text-sm"
+            >
+              Depoimentos
+            </button>
+            <button 
+              onClick={() => scrollToSection('ferramentas')}
+              className="text-white hover:text-purple-300 transition-colors text-sm"
+            >
+              Ferramentas
+            </button>
+            <button 
+              onClick={() => scrollToSection('galeria')}
+              className="text-white hover:text-purple-300 transition-colors text-sm"
+            >
+              Galeria
+            </button>
+            <button 
+              onClick={() => scrollToSection('simulador')}
+              className="text-white hover:text-purple-300 transition-colors text-sm"
+            >
+              Simulador
+            </button>
+            <button 
               onClick={() => scrollToSection('faq')}
               className="text-white hover:text-purple-300 transition-colors text-sm"
             >
@@ -59,7 +82,7 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
             >
               Contato
             </button>
-            
+
             {/* Dark Mode Toggle */}
             <Button
               variant="ghost"
@@ -70,7 +93,7 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
           </nav>
-          
+
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <Button
@@ -95,7 +118,7 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
             </Button>
           </div>
         </div>
-        
+
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4">
@@ -119,8 +142,38 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
                 Agendamento
               </button>
               <button 
-                onClick={() => scrollToSection('contato')}
-                className="text-white hover:text-purple-300 transition-colors py-2 text-left"
+                onClick={() => scrollToSection('depoimentos')}
+                className="text-white hover:text-purple-300 transition-colors py-2"
+              >
+                Depoimentos
+              </button>
+              <button 
+                onClick={() => { scrollToSection('ferramentas'); setMobileMenuOpen(false); }}
+                className="text-white hover:text-purple-300 transition-colors py-2"
+              >
+                Ferramentas
+              </button>
+              <button 
+                onClick={() => { scrollToSection('galeria'); setMobileMenuOpen(false); }}
+                className="text-white hover:text-purple-300 transition-colors py-2"
+              >
+                Galeria
+              </button>
+              <button 
+                onClick={() => { scrollToSection('simulador'); setMobileMenuOpen(false); }}
+                className="text-white hover:text-purple-300 transition-colors py-2"
+              >
+                Simulador
+              </button>
+              <button 
+                onClick={() => { scrollToSection('faq'); setMobileMenuOpen(false); }}
+                className="text-white hover:text-purple-300 transition-colors py-2"
+              >
+                FAQ
+              </button>
+              <button 
+                onClick={() => { scrollToSection('contato'); setMobileMenuOpen(false); }}
+                className="text-white hover:text-purple-300 transition-colors py-2"
               >
                 Contato
               </button>
