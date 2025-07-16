@@ -277,4 +277,27 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-float.delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .animate-float.delay-1000 {
+    animation-delay: 1s;
+  }
 }

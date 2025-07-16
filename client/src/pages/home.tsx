@@ -1075,30 +1075,126 @@ Espaço Sil - Sua beleza é nossa arte
       </header>
 
       {/* Hero Section */}
-      <section id="inicio" className="primary-gradient min-h-screen flex items-center justify-center text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="fade-in">
-            <img 
-              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-              alt="Interior moderno de salão de beleza" 
-              className="w-32 h-32 mx-auto rounded-full shadow-2xl mb-8 object-cover"
-            />
+      <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Gradient with Overlay */}
+        <div className="absolute inset-0 primary-gradient"></div>
+        
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-pink-300/15 rounded-full blur-2xl animate-pulse delay-500"></div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="fade-in max-w-4xl mx-auto">
+            {/* Profile Image with Enhanced Styling */}
+            <div className="relative mb-12">
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-600 rounded-full w-40 h-40 mx-auto blur-2xl opacity-50 animate-pulse"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                alt="Interior moderno de salão de beleza" 
+                className="relative w-40 h-40 mx-auto rounded-full shadow-2xl object-cover border-4 border-white/30 backdrop-blur-sm"
+              />
+              <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-400 rounded-full border-4 border-white flex items-center justify-center">
+                <div className="w-3 h-3 bg-green-600 rounded-full animate-ping"></div>
+              </div>
+            </div>
             
-            <h1 className="hero-title font-bold mb-6">
-              Espaço Sil
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 font-light">
-              Sua beleza é nossa arte.
+            {/* Main Title with Enhanced Typography */}
+            <div className="mb-8">
+              <h1 className="text-6xl md:text-8xl font-bold mb-4 text-white">
+                <span className="bg-gradient-to-r from-white via-purple-100 to-pink-100 bg-clip-text text-transparent">
+                  Espaço
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-pink-200 via-purple-200 to-white bg-clip-text text-transparent">
+                  Sil
+                </span>
+              </h1>
+              <div className="flex items-center justify-center space-x-2 mb-6">
+                <div className="h-px bg-gradient-to-r from-transparent via-white to-transparent w-24"></div>
+                <Sparkles className="text-white text-2xl" />
+                <div className="h-px bg-gradient-to-r from-transparent via-white to-transparent w-24"></div>
+              </div>
+            </div>
+
+            {/* Subtitle with Enhanced Styling */}
+            <p className="text-2xl md:text-3xl mb-12 font-light text-white/90 leading-relaxed">
+              Sua beleza é nossa
+              <span className="bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent font-semibold"> arte</span>
             </p>
-            <Button 
-              asChild
-              className="bg-white text-purple-800 hover:bg-gray-100 font-semibold px-8 py-6 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300"
-            >
-              <a href="https://agenda.codematch.com.br/dashboard" target="_blank" rel="noopener noreferrer">
-                <Calendar className="mr-2 h-5 w-5" />
-                Agende seu horário
-              </a>
-            </Button>
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
+              <div className="glass-effect p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+                <Award className="text-yellow-300 text-3xl mb-3 mx-auto" />
+                <h3 className="text-white font-semibold text-lg mb-2">Profissional Certificada</h3>
+                <p className="text-white/80 text-sm">Mais de 5 anos de experiência</p>
+              </div>
+              
+              <div className="glass-effect p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+                <Users className="text-blue-300 text-3xl mb-3 mx-auto" />
+                <h3 className="text-white font-semibold text-lg mb-2">500+ Clientes</h3>
+                <p className="text-white/80 text-sm">Satisfeitas com nosso trabalho</p>
+              </div>
+              
+              <div className="glass-effect p-6 rounded-2xl backdrop-blur-sm border border-white/20">
+                <Star className="text-pink-300 text-3xl mb-3 mx-auto" />
+                <h3 className="text-white font-semibold text-lg mb-2">Avaliação 4.9</h3>
+                <p className="text-white/80 text-sm">Excelência reconhecida</p>
+              </div>
+            </div>
+
+            {/* Enhanced CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                asChild
+                className="group bg-white text-purple-800 hover:bg-gray-100 font-semibold px-10 py-6 rounded-full text-lg shadow-2xl transform hover:scale-105 transition-all duration-500 hover:shadow-white/25"
+              >
+                <a href="https://agenda.codematch.com.br/dashboard" target="_blank" rel="noopener noreferrer">
+                  <Calendar className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                  Agende seu horário
+                </a>
+              </Button>
+              
+              <Button 
+                asChild
+                variant="outline"
+                className="group border-2 border-white/30 text-white hover:bg-white/10 font-semibold px-10 py-6 rounded-full text-lg backdrop-blur-sm hover:border-white/50 transition-all duration-500"
+              >
+                <a href="https://wa.me/5511965919937" target="_blank" rel="noopener noreferrer">
+                  <Phone className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+                  WhatsApp
+                </a>
+              </Button>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+              <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-1/4 left-8 hidden lg:block">
+          <div className="glass-effect p-4 rounded-xl backdrop-blur-sm border border-white/20 animate-float">
+            <Scissors className="text-white text-2xl" />
+          </div>
+        </div>
+        
+        <div className="absolute top-1/3 right-8 hidden lg:block">
+          <div className="glass-effect p-4 rounded-xl backdrop-blur-sm border border-white/20 animate-float delay-1000">
+            <Palette className="text-white text-2xl" />
+          </div>
+        </div>
+        
+        <div className="absolute bottom-1/4 left-12 hidden lg:block">
+          <div className="glass-effect p-4 rounded-xl backdrop-blur-sm border border-white/20 animate-float delay-500">
+            <Sparkles className="text-white text-2xl" />
           </div>
         </div>
       </section>
