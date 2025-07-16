@@ -383,7 +383,6 @@
     border-left-color: #7c3aed;
     background: linear-gradient(135deg, #f8fafc, #f1f5f9);
   }
-  
   .step-indicator {
     background: linear-gradient(135deg, #7c3aed, #db2777);
     color: white;
@@ -395,7 +394,6 @@
     justify-content: center;
     font-weight: bold;
     font-size: 14px;
-  }
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
