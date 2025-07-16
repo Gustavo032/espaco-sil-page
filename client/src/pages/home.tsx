@@ -33,35 +33,7 @@ import {
   ArrowUp,
   Gift,
   Users,
-  Zap,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Camera,
-  Download,
-  Bookmark,
-  ThumbsUp,
-  MessageCircle,
-  Send,
-  Bell,
-  BellOff,
-  Printer,
-  QrCode,
-  Wifi,
-  Shield,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  TrendingUp,
-  BarChart3,
-  PieChart,
-  Activity,
-  Gamepad2,
-  Sparkle,
-  Coins,
-  Crown,
-  Flame
+  Zap
 } from "lucide-react";
 
 const services = [
@@ -127,81 +99,19 @@ const testimonials = [
   {
     name: "Larissa",
     text: "Meu cabelo nunca esteve tão lindo!",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b112b4df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-    service: "Progressiva",
-    rating: 5,
-    date: "2024-01-15"
+    image: "https://images.unsplash.com/photo-1494790108755-2616b112b4df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
   },
   {
     name: "Juliana",
     text: "O atendimento é impecável. Recomendo!",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-    service: "Corte",
-    rating: 5,
-    date: "2024-01-10"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
   },
   {
     name: "Camila",
     text: "A Sil realmente entende de beleza.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150",
-    service: "Coloração",
-    rating: 5,
-    date: "2024-01-08"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
   }
 ];
-
-const galleryImages = [
-  {
-    id: 1,
-    url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-    title: "Progressiva",
-    description: "Resultado incrível de progressiva"
-  },
-  {
-    id: 2,
-    url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-    title: "Corte Moderno",
-    description: "Corte moderno e estiloso"
-  },
-  {
-    id: 3,
-    url: "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-    title: "Coloração",
-    description: "Transformação com coloração"
-  },
-  {
-    id: 4,
-    url: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-    title: "Botox Capilar",
-    description: "Cabelo hidratado e brilhante"
-  }
-];
-
-const faqData = [
-  {
-    question: "Quanto tempo dura uma progressiva?",
-    answer: "A progressiva dura em média 3 a 4 meses, dependendo do tipo de cabelo e cuidados posteriores. Recomendamos produtos específicos para manter o resultado por mais tempo."
-  },
-  {
-    question: "Posso fazer coloração no mesmo dia da progressiva?",
-    answer: "Não recomendamos fazer ambos procedimentos no mesmo dia. O ideal é aguardar pelo menos 15 dias entre os processos para não danificar o cabelo."
-  },
-  {
-    question: "Vocês trabalham com agendamento online?",
-    answer: "Sim! Você pode agendar através do nosso sistema online ou pelo WhatsApp. Também aceitamos agendamentos por telefone."
-  },
-  {
-    question: "Quais formas de pagamento vocês aceitam?",
-    answer: "Aceitamos dinheiro, cartão de débito, cartão de crédito (até 3x sem juros), PIX e transferência bancária."
-  }
-];
-
-const loyaltyProgram = {
-  bronze: { visits: 0, discount: 0, icon: Coins },
-  silver: { visits: 5, discount: 10, icon: Award },
-  gold: { visits: 10, discount: 15, icon: Crown },
-  diamond: { visits: 20, discount: 20, icon: Sparkle }
-};
 
 export default function Home() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
@@ -215,23 +125,6 @@ export default function Home() {
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
   const [showContactForm, setShowContactForm] = useState(false);
   const [showPromotion, setShowPromotion] = useState(true);
-  const [showGallery, setShowGallery] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
-  const [showFAQ, setShowFAQ] = useState(false);
-  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const [notifications, setNotifications] = useState(true);
-  const [loyaltyVisits, setLoyaltyVisits] = useState(0);
-  const [showLoyaltyModal, setShowLoyaltyModal] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-  const [showPriceCalculator, setShowPriceCalculator] = useState(false);
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [showBookingCalendar, setShowBookingCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [showReviewModal, setShowReviewModal] = useState(false);
-  const [newReview, setNewReview] = useState({ rating: 5, comment: "", name: "" });
-  const [showQRCode, setShowQRCode] = useState(false);
-  const [visitCounter, setVisitCounter] = useState(0);
   const { toast } = useToast();
 
   // Auto-rotate testimonials
@@ -266,18 +159,6 @@ export default function Home() {
     if (saved) {
       setLikedServices(JSON.parse(saved));
     }
-    
-    // Load loyalty visits
-    const savedVisits = localStorage.getItem('loyaltyVisits');
-    if (savedVisits) {
-      setLoyaltyVisits(parseInt(savedVisits));
-    }
-    
-    // Track visit counter
-    const savedCounter = localStorage.getItem('visitCounter');
-    const currentCounter = savedCounter ? parseInt(savedCounter) + 1 : 1;
-    setVisitCounter(currentCounter);
-    localStorage.setItem('visitCounter', currentCounter.toString());
   }, []);
 
   useEffect(() => {
@@ -368,101 +249,6 @@ export default function Home() {
     }, 1000);
   };
 
-  // Additional helper functions
-  const getLoyaltyTier = (visits: number) => {
-    if (visits >= 20) return { tier: 'diamond', ...loyaltyProgram.diamond };
-    if (visits >= 10) return { tier: 'gold', ...loyaltyProgram.gold };
-    if (visits >= 5) return { tier: 'silver', ...loyaltyProgram.silver };
-    return { tier: 'bronze', ...loyaltyProgram.bronze };
-  };
-
-  const calculateTotalPrice = () => {
-    return selectedServices.reduce((total, serviceId) => {
-      const service = services.find(s => s.id === serviceId);
-      const basePrice = getServicePrice(serviceId);
-      const loyaltyTier = getLoyaltyTier(loyaltyVisits);
-      const discount = (basePrice * loyaltyTier.discount) / 100;
-      return total + (basePrice - discount);
-    }, 0);
-  };
-
-  const getServicePrice = (serviceId: string) => {
-    const prices: { [key: string]: number } = {
-      progressiva: 150,
-      selagem: 80,
-      botox: 120,
-      coloracao: 100,
-      cronograma: 60,
-      corte: 50,
-      sobrancelha: 25,
-      manicure: 30
-    };
-    return prices[serviceId] || 0;
-  };
-
-  const addLoyaltyVisit = () => {
-    const newVisits = loyaltyVisits + 1;
-    setLoyaltyVisits(newVisits);
-    localStorage.setItem('loyaltyVisits', newVisits.toString());
-    
-    const newTier = getLoyaltyTier(newVisits);
-    const oldTier = getLoyaltyTier(loyaltyVisits);
-    
-    if (newTier.tier !== oldTier.tier) {
-      toast({
-        title: "Parabéns! Novo nível desbloqueado!",
-        description: `Você alcançou o nível ${newTier.tier.toUpperCase()} e ganhou ${newTier.discount}% de desconto!`,
-      });
-    }
-  };
-
-  const toggleServiceSelection = (serviceId: string) => {
-    setSelectedServices(prev => 
-      prev.includes(serviceId) 
-        ? prev.filter(id => id !== serviceId)
-        : [...prev, serviceId]
-    );
-  };
-
-  const submitReview = () => {
-    if (!newReview.name || !newReview.comment) {
-      toast({
-        title: "Erro",
-        description: "Por favor, preencha todos os campos.",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    toast({
-      title: "Avaliação enviada!",
-      description: "Obrigado pelo seu feedback. Sua avaliação será publicada em breve.",
-    });
-    
-    setNewReview({ rating: 5, comment: "", name: "" });
-    setShowReviewModal(false);
-  };
-
-  const downloadQRCode = () => {
-    toast({
-      title: "QR Code baixado!",
-      description: "O QR Code foi salvo na sua pasta de downloads.",
-    });
-  };
-
-  const toggleNotifications = () => {
-    setNotifications(!notifications);
-    if ("Notification" in window) {
-      if (notifications) {
-        Notification.requestPermission();
-      }
-    }
-    toast({
-      title: notifications ? "Notificações desativadas" : "Notificações ativadas",
-      description: notifications ? "Você não receberá mais notificações." : "Você receberá notificações sobre promoções e novidades.",
-    });
-  };
-
   // Filter services based on search and category
   const filteredServices = services.filter(service => {
     const matchesSearch = service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -524,47 +310,6 @@ export default function Home() {
               >
                 Contato
               </button>
-              
-              {/* Additional Features */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:text-purple-300"
-                onClick={() => setShowGallery(true)}
-                title="Galeria de Fotos"
-              >
-                <Camera className="h-5 w-5" />
-              </Button>
-              
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:text-purple-300"
-                onClick={() => setShowFAQ(true)}
-                title="Perguntas Frequentes"
-              >
-                <MessageCircle className="h-5 w-5" />
-              </Button>
-              
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:text-purple-300"
-                onClick={toggleNotifications}
-                title={notifications ? "Desativar Notificações" : "Ativar Notificações"}
-              >
-                {notifications ? <Bell className="h-5 w-5" /> : <BellOff className="h-5 w-5" />}
-              </Button>
-              
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:text-purple-300"
-                onClick={() => setShowQRCode(true)}
-                title="QR Code"
-              >
-                <QrCode className="h-5 w-5" />
-              </Button>
               
               {/* Dark Mode Toggle */}
               <Button
@@ -675,7 +420,7 @@ export default function Home() {
           
           {/* Search and Filter */}
           <div className="max-w-4xl mx-auto mb-12 fade-in">
-            <div className="flex flex-col md:flex-row gap-4 items-center mb-6">
+            <div className="flex flex-col md:flex-row gap-4 items-center">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
                 <Input
@@ -702,47 +447,6 @@ export default function Home() {
                   <option value="sobrancelha">Sobrancelha</option>
                   <option value="manicure">Manicure e Pedicure</option>
                 </select>
-              </div>
-            </div>
-            
-            {/* Loyalty Program Display */}
-            <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-lg mb-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  {(() => {
-                    const tier = getLoyaltyTier(loyaltyVisits);
-                    const TierIcon = tier.icon;
-                    return (
-                      <>
-                        <TierIcon className="h-8 w-8" />
-                        <div>
-                          <h3 className="font-semibold">Programa de Fidelidade - {tier.tier.toUpperCase()}</h3>
-                          <p className="text-sm opacity-90">{loyaltyVisits} visitas • {tier.discount}% de desconto</p>
-                        </div>
-                      </>
-                    );
-                  })()}
-                </div>
-                <div className="flex space-x-2">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowLoyaltyModal(true)}
-                    className="text-white hover:bg-white/20"
-                  >
-                    <Crown className="h-4 w-4 mr-1" />
-                    Detalhes
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowPriceCalculator(true)}
-                    className="text-white hover:bg-white/20"
-                  >
-                    <BarChart3 className="h-4 w-4 mr-1" />
-                    Calculadora
-                  </Button>
-                </div>
               </div>
             </div>
           </div>
@@ -789,25 +493,6 @@ export default function Home() {
                   <h3 className="text-xl font-semibold mb-2 dark:text-white">{service.name}</h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{service.description}</p>
                   
-                  {/* Price with loyalty discount */}
-                  <div className="mb-4">
-                    <div className="flex items-center justify-center space-x-2">
-                      <span className="text-2xl font-bold text-purple-600">
-                        R$ {(getServicePrice(service.id) * (1 - getLoyaltyTier(loyaltyVisits).discount / 100)).toFixed(2)}
-                      </span>
-                      {getLoyaltyTier(loyaltyVisits).discount > 0 && (
-                        <span className="text-sm text-gray-500 line-through">
-                          R$ {getServicePrice(service.id).toFixed(2)}
-                        </span>
-                      )}
-                    </div>
-                    {getLoyaltyTier(loyaltyVisits).discount > 0 && (
-                      <Badge variant="secondary" className="mt-1">
-                        -{getLoyaltyTier(loyaltyVisits).discount}% desconto
-                      </Badge>
-                    )}
-                  </div>
-                  
                   {likedServices.includes(service.id) && (
                     <Badge variant="secondary" className="mb-3">
                       <Heart className="h-3 w-3 mr-1" />
@@ -815,39 +500,9 @@ export default function Home() {
                     </Badge>
                   )}
                   
-                  <div className="flex flex-col space-y-2">
-                    <Button 
-                      variant="ghost" 
-                      className="text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedService(service);
-                      }}
-                    >
-                      Ver mais
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleServiceSelection(service.id);
-                      }}
-                      className={selectedServices.includes(service.id) ? "bg-purple-100 border-purple-300" : ""}
-                    >
-                      {selectedServices.includes(service.id) ? (
-                        <>
-                          <CheckCircle className="h-4 w-4 mr-1" />
-                          Selecionado
-                        </>
-                      ) : (
-                        <>
-                          <Coins className="h-4 w-4 mr-1" />
-                          Adicionar
-                        </>
-                      )}
-                    </Button>
-                  </div>
+                  <Button variant="ghost" className="text-purple-600 hover:text-purple-800 dark:text-purple-400 dark:hover:text-purple-300">
+                    Ver mais
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -1282,246 +937,16 @@ export default function Home() {
         </form>
       </Modal>
 
-      {/* Gallery Modal */}
-      <Modal
-        isOpen={showGallery}
-        onClose={() => setShowGallery(false)}
-        title="Galeria de Trabalhos"
-      >
-        <div className="grid grid-cols-2 gap-4">
-          {galleryImages.map((image) => (
-            <div key={image.id} className="relative group cursor-pointer">
-              <img
-                src={image.url}
-                alt={image.title}
-                className="w-full h-32 object-cover rounded-lg"
-                onClick={() => setSelectedImage(image)}
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <Camera className="h-8 w-8 text-white" />
-              </div>
-            </div>
-          ))}
-        </div>
-      </Modal>
-
-      {/* FAQ Modal */}
-      <Modal
-        isOpen={showFAQ}
-        onClose={() => setShowFAQ(false)}
-        title="Perguntas Frequentes"
-      >
-        <div className="space-y-4">
-          {faqData.map((faq, index) => (
-            <div key={index} className="border-b pb-4">
-              <button
-                className="flex justify-between items-center w-full text-left"
-                onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-              >
-                <span className="font-semibold">{faq.question}</span>
-                <ChevronRight className={`h-4 w-4 transition-transform ${openFAQ === index ? 'rotate-90' : ''}`} />
-              </button>
-              {openFAQ === index && (
-                <p className="mt-2 text-gray-600 dark:text-gray-300">{faq.answer}</p>
-              )}
-            </div>
-          ))}
-        </div>
-      </Modal>
-
-      {/* Loyalty Program Modal */}
-      <Modal
-        isOpen={showLoyaltyModal}
-        onClose={() => setShowLoyaltyModal(false)}
-        title="Programa de Fidelidade"
-      >
-        <div className="space-y-4">
-          {Object.entries(loyaltyProgram).map(([tier, data]) => {
-            const IconComponent = data.icon;
-            const isCurrentTier = getLoyaltyTier(loyaltyVisits).tier === tier;
-            return (
-              <div key={tier} className={`p-4 rounded-lg border ${isCurrentTier ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20' : 'border-gray-200 dark:border-gray-700'}`}>
-                <div className="flex items-center space-x-3">
-                  <IconComponent className="h-6 w-6 text-purple-600" />
-                  <div>
-                    <h3 className="font-semibold capitalize">{tier}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {data.visits} visitas • {data.discount}% desconto
-                    </p>
-                  </div>
-                  {isCurrentTier && (
-                    <Badge variant="secondary">Atual</Badge>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </Modal>
-
-      {/* Price Calculator Modal */}
-      <Modal
-        isOpen={showPriceCalculator}
-        onClose={() => setShowPriceCalculator(false)}
-        title="Calculadora de Preços"
-      >
-        <div className="space-y-4">
-          <div className="text-center p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-            <h3 className="text-2xl font-bold text-purple-600">
-              R$ {calculateTotalPrice().toFixed(2)}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              Total com desconto de fidelidade
-            </p>
-          </div>
-          
-          <div className="space-y-2">
-            <h4 className="font-semibold">Serviços Selecionados:</h4>
-            {selectedServices.length === 0 ? (
-              <p className="text-gray-500">Nenhum serviço selecionado</p>
-            ) : (
-              selectedServices.map(serviceId => {
-                const service = services.find(s => s.id === serviceId);
-                const price = getServicePrice(serviceId);
-                const discount = (price * getLoyaltyTier(loyaltyVisits).discount) / 100;
-                return (
-                  <div key={serviceId} className="flex justify-between items-center p-2 bg-gray-50 dark:bg-gray-800 rounded">
-                    <span>{service?.name}</span>
-                    <div className="text-right">
-                      <span className="font-semibold">R$ {(price - discount).toFixed(2)}</span>
-                      {discount > 0 && (
-                        <div className="text-sm text-gray-500 line-through">R$ {price.toFixed(2)}</div>
-                      )}
-                    </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
-          
-          <Button
-            onClick={addLoyaltyVisit}
-            disabled={selectedServices.length === 0}
-            className="w-full bg-green-500 hover:bg-green-600 text-white"
-          >
-            <Calendar className="mr-2 h-4 w-4" />
-            Agendar Serviços
-          </Button>
-        </div>
-      </Modal>
-
-      {/* Review Modal */}
-      <Modal
-        isOpen={showReviewModal}
-        onClose={() => setShowReviewModal(false)}
-        title="Deixe sua Avaliação"
-      >
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium mb-2">Sua Avaliação</label>
-            <div className="flex space-x-1">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <button
-                  key={star}
-                  onClick={() => setNewReview({...newReview, rating: star})}
-                  className={`text-2xl ${star <= newReview.rating ? 'text-yellow-400' : 'text-gray-300'}`}
-                >
-                  <Star className="h-6 w-6 fill-current" />
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium mb-2">Seu Nome</label>
-            <Input
-              value={newReview.name}
-              onChange={(e) => setNewReview({...newReview, name: e.target.value})}
-              placeholder="Digite seu nome"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium mb-2">Comentário</label>
-            <Textarea
-              value={newReview.comment}
-              onChange={(e) => setNewReview({...newReview, comment: e.target.value})}
-              placeholder="Conte sobre sua experiência..."
-              rows={4}
-            />
-          </div>
-          
-          <Button onClick={submitReview} className="w-full">
-            <Send className="mr-2 h-4 w-4" />
-            Enviar Avaliação
-          </Button>
-        </div>
-      </Modal>
-
-      {/* QR Code Modal */}
-      <Modal
-        isOpen={showQRCode}
-        onClose={() => setShowQRCode(false)}
-        title="QR Code - Espaço Sil"
-      >
-        <div className="text-center space-y-4">
-          <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg">
-            <QrCode className="h-32 w-32 mx-auto text-purple-600" />
-          </div>
-          <p className="text-sm text-gray-600 dark:text-gray-300">
-            Compartilhe este QR Code para que outras pessoas possam acessar nosso site
-          </p>
-          <div className="flex space-x-2">
-            <Button
-              onClick={downloadQRCode}
-              className="flex-1"
-              variant="outline"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Baixar
-            </Button>
-            <Button
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                toast({ title: "Link copiado!", description: "URL copiada para a área de transferência" });
-              }}
-              className="flex-1"
-            >
-              <Share2 className="mr-2 h-4 w-4" />
-              Compartilhar
-            </Button>
-          </div>
-        </div>
-      </Modal>
-
-      {/* Floating Action Button */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col space-y-2">
+      {/* Back to Top Button */}
+      {showBackToTop && (
         <Button
-          onClick={() => setShowReviewModal(true)}
-          className="bg-green-500 hover:bg-green-600 text-white shadow-lg rounded-full p-3 transition-all duration-300"
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-purple-600 hover:bg-purple-700 text-white shadow-lg rounded-full p-3 transition-all duration-300"
           size="icon"
-          title="Deixar Avaliação"
         >
-          <Star className="h-5 w-5" />
+          <ArrowUp className="h-5 w-5" />
         </Button>
-        
-        {/* Back to Top Button */}
-        {showBackToTop && (
-          <Button
-            onClick={scrollToTop}
-            className="bg-purple-600 hover:bg-purple-700 text-white shadow-lg rounded-full p-3 transition-all duration-300"
-            size="icon"
-            title="Voltar ao Topo"
-          >
-            <ArrowUp className="h-5 w-5" />
-          </Button>
-        )}
-        
-        {/* Visit Counter */}
-        <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-xs">
-          Visita #{visitCounter}
-        </div>
-      </div>
+      )}
     </div>
   );
 }

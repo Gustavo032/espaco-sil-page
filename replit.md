@@ -121,21 +121,6 @@ Preferred communication style: Simple, everyday language.
 - **Visual Improvements**: Added floating animations, glass effects, and gradient text
 - **Accessibility**: Better keyboard navigation and screen reader support
 
-### January 16, 2025 - Advanced Features Update
-- **Loyalty Program System**: Multi-tier loyalty program (Bronze, Silver, Gold, Diamond) with automatic discounts
-- **Price Calculator**: Interactive price calculator with loyalty discounts and service selection
-- **Photo Gallery**: Modal gallery showcasing beauty salon work with image preview
-- **FAQ System**: Expandable FAQ section with common questions and answers
-- **Service Pricing**: Dynamic pricing display with loyalty discounts and original price strikethrough
-- **Review System**: Customer review submission with star ratings and comments
-- **QR Code Generator**: Shareable QR code for easy website access
-- **Notification System**: Push notification preferences with toggle control
-- **Visit Counter**: Automatic visit tracking with display counter
-- **Service Selection**: Multi-select service functionality for price calculation
-- **Floating Action Buttons**: Multiple floating buttons for quick actions (review, back-to-top)
-- **Advanced Modals**: Multiple specialized modals for different functionalities
-- **Local Storage Integration**: Persistent storage for user preferences and visit tracking
-
 ### Core Features Now Available:
 - Modern responsive design with custom purple gradients
 - Header with smooth navigation and mobile menu
@@ -152,15 +137,5 @@ Preferred communication style: Simple, everyday language.
 - Contact form with validation
 - Back-to-top navigation
 - Promotion banner system
-- Photo gallery with image preview
-- FAQ system with expandable answers
-- Loyalty program with tier-based discounts
-- Price calculator with service selection
-- Review system with star ratings
-- QR code sharing functionality
-- Notification toggle system
-- Visit counter tracking
-- Floating action buttons for quick access
-- Advanced modal system for multiple features
 
 The application is designed as a static landing page with minimal backend requirements, making it suitable for deployment on platforms like Vercel, Netlify, or traditional hosting providers.
