@@ -291,6 +291,217 @@ const appointmentReminders = [
   }
 ];
 
+const hairCareCalculator = {
+  calculateNextAppointment: (lastDate: Date, serviceType: string) => {
+    const intervals: { [key: string]: number } = {
+      'progressiva': 120, // 4 meses
+      'coloracao': 35, // 5 semanas
+      'corte': 45, // 6-7 semanas
+      'hidratacao': 15, // 2 semanas
+      'sobrancelha': 20, // 3 semanas
+      'manicure': 14 // 2 semanas
+    };
+    
+    const days = intervals[serviceType] || 30;
+    const nextDate = new Date(lastDate);
+    nextDate.setDate(nextDate.getDate() + days);
+    return nextDate;
+  },
+  
+  calculateHairGrowth: (weeks: number) => {
+    const averageGrowthPerWeek = 0.35; // cm per week
+    return (weeks * averageGrowthPerWeek).toFixed(1);
+  },
+  
+  recommendSchedule: (hairType: string, chemicalTreatment: boolean) => {
+    if (chemicalTreatment) {
+      return {
+        hydration: "Semanal",
+        nutrition: "Quinzenal", 
+        reconstruction: "Mensal",
+        note: "Cabelos com química precisam de mais cuidados"
+      };
+    } else {
+      return {
+        hydration: "Quinzenal",
+        nutrition: "Semanal",
+        reconstruction: "Mensal",
+        note: "Mantenha a rotina para cabelos saudáveis"
+      };
+    }
+  }
+};
+
+const virtualConsultation = {
+  questions: [
+    {
+      id: "hairType",
+      question: "Qual é seu tipo de cabelo?",
+      options: ["Liso", "Ondulado", "Cacheado", "Crespo"]
+    },
+    {
+      id: "length",
+      question: "Qual o comprimento atual?",
+      options: ["Curto (até o queixo)", "Médio (até os ombros)", "Longo (além dos ombros)", "Extra longo"]
+    },
+    {
+      id: "condition",
+      question: "Como está a condição dos seus cabelos?",
+      options: ["Saudável", "Ressecado", "Oleoso", "Misto", "Danificado"]
+    },
+    {
+      id: "chemicalHistory",
+      question: "Fez algum procedimento químico recentemente?",
+      options: ["Não", "Progressiva", "Coloração", "Relaxamento", "Luzes/Mechas"]
+    },
+    {
+      id: "desired",
+      question: "O que você gostaria de fazer?",
+      options: ["Corte", "Cor", "Tratamento", "Mudança radical", "Manutenção"]
+    }
+  ],
+  
+  generateRecommendation: (answers: { [key: string]: string }) => {
+    let recommendations = [];
+    let urgency = "baixa";
+    
+    if (answers.condition === "Danificado") {
+      recommendations.push("Reconstrução capilar urgente");
+      recommendations.push("Cronograma capilar intensivo");
+      urgency = "alta";
+    }
+    
+    if (answers.chemicalHistory !== "Não") {
+      recommendations.push("Hidratação profunda");
+      recommendations.push("Proteína capilar");
+    }
+    
+    if (answers.desired === "Mudança radical") {
+      recommendations.push("Consulta presencial obrigatória");
+      recommendations.push("Teste de mecha recomendado");
+    }
+    
+    return {
+      recommendations,
+      urgency,
+      estimatedTime: urgency === "alta" ? "2-3 horas" : "1-2 horas",
+      followUp: "Retorno em 15 dias para avaliação"
+    };
+  }
+};
+
+const seasonalTips = [
+  {
+    season: "Verão",
+    icon: Sun,
+    tips: [
+      "Use protetor solar capilar",
+      "Hidrate mais frequentemente",
+      "Evite ferramentas de calor",
+      "Penteados protegidos são ideais"
+    ],
+    products: ["Leave-in com proteção UV", "Óleo capilar", "Máscara hidratante"]
+  },
+  {
+    season: "Inverno", 
+    icon: Wind,
+    tips: [
+      "Intensifique a nutrição",
+      "Use óleos capilares",
+      "Evite água muito quente",
+      "Cubra os cabelos no frio"
+    ],
+    products: ["Máscaras nutritivas", "Óleos vegetais", "Cremes leave-in"]
+  }
+];
+
+const hairEmergencyKit = [
+  {
+    problem: "Cabelo muito oleoso",
+    solution: "Shampoo seco caseiro: amido de milho + cacau em pó",
+    icon: AlertCircle
+  },
+  {
+    problem: "Frizz descontrolado", 
+    solution: "Misture um pouco de creme de pentear com água",
+    icon: Zap
+  },
+  {
+    problem: "Pontas duplas",
+    solution: "Torça pequenas mechas e corte os fios que saem",
+    icon: Scissors
+  },
+  {
+    problem: "Caspa emergencial",
+    solution: "Massageie couro cabeludo com óleo de coco morno",
+    icon: Sparkles
+  }
+];
+
+const interactiveTutorials = [
+  {
+    id: "braiding",
+    title: "Aprenda a Fazer Tranças",
+    difficulty: "Iniciante",
+    duration: "10 min",
+    steps: [
+      "Escove bem o cabelo",
+      "Divida em 3 mechas iguais", 
+      "Cruze a mecha direita sobre a central",
+      "Cruze a mecha esquerda sobre a nova central",
+      "Repita até o final",
+      "Prenda com elástico"
+    ],
+    tips: ["Pratique com cabelo úmido", "Use creme para pentear"]
+  },
+  {
+    id: "bun",
+    title: "Coque Perfeito",
+    difficulty: "Fácil",
+    duration: "5 min", 
+    steps: [
+      "Faça um rabo alto",
+      "Torça o rabo",
+      "Enrole ao redor da base",
+      "Prenda com grampos",
+      "Finalize com spray"
+    ],
+    tips: ["Texturize antes para mais volume", "Use invisível da cor do cabelo"]
+  }
+];
+
+const personalizedReminders = {
+  setReminder: (type: string, date: Date, notes: string) => {
+    const reminders = JSON.parse(localStorage.getItem('hairReminders') || '[]');
+    const newReminder = {
+      id: Date.now(),
+      type,
+      date: date.toISOString(),
+      notes,
+      completed: false
+    };
+    reminders.push(newReminder);
+    localStorage.setItem('hairReminders', JSON.stringify(reminders));
+    return newReminder;
+  },
+  
+  getUpcomingReminders: () => {
+    const reminders = JSON.parse(localStorage.getItem('hairReminders') || '[]');
+    const now = new Date();
+    return reminders
+      .filter((r: any) => new Date(r.date) > now && !r.completed)
+      .sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  },
+  
+  completeReminder: (id: number) => {
+    const reminders = JSON.parse(localStorage.getItem('hairReminders') || '[]');
+    const updated = reminders.map((r: any) => 
+      r.id === id ? { ...r, completed: true } : r
+    );
+    localStorage.setItem('hairReminders', JSON.stringify(updated));
+  }
+};
+
 export default function Home() {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -308,6 +519,24 @@ export default function Home() {
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null);
   const [savedGuides, setSavedGuides] = useState<string[]>([]);
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+  const [showCalculator, setShowCalculator] = useState(false);
+  const [showVirtualConsult, setShowVirtualConsult] = useState(false);
+  const [consultAnswers, setConsultAnswers] = useState<{ [key: string]: string }>({});
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [showTutorial, setShowTutorial] = useState<typeof interactiveTutorials[0] | null>(null);
+  const [currentTutorialStep, setCurrentTutorialStep] = useState(0);
+  const [showEmergencyKit, setShowEmergencyKit] = useState(false);
+  const [showSeasonalTips, setShowSeasonalTips] = useState(false);
+  const [userReminders, setUserReminders] = useState<any[]>([]);
+  const [showReminderForm, setShowReminderForm] = useState(false);
+  const [calculatorType, setCalculatorType] = useState<'appointment' | 'growth' | 'schedule'>('appointment');
+  const [calculatorInputs, setCalculatorInputs] = useState({
+    lastAppointment: '',
+    serviceType: 'corte',
+    weeks: 4,
+    hairType: 'normal',
+    hasChemical: false
+  });
   const { toast } = useToast();
 
   // Auto-rotate testimonials
@@ -347,6 +576,9 @@ export default function Home() {
     if (savedGuidesData) {
       setSavedGuides(JSON.parse(savedGuidesData));
     }
+    
+    // Load reminders
+    setUserReminders(personalizedReminders.getUpcomingReminders());
   }, []);
 
   // Auto-rotate gallery
@@ -463,6 +695,80 @@ export default function Home() {
 
   const toggleFaq = (question: string) => {
     setExpandedFaq(expandedFaq === question ? null : question);
+  };
+
+  const handleVirtualConsultAnswer = (answer: string) => {
+    const newAnswers = {
+      ...consultAnswers,
+      [virtualConsultation.questions[currentQuestion].id]: answer
+    };
+    setConsultAnswers(newAnswers);
+    
+    if (currentQuestion < virtualConsultation.questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      // Show recommendation
+      const recommendation = virtualConsultation.generateRecommendation(newAnswers);
+      toast({
+        title: "Consulta Virtual Concluída!",
+        description: `Recomendações: ${recommendation.recommendations.join(', ')}. Tempo estimado: ${recommendation.estimatedTime}`,
+        duration: 10000,
+      });
+      setShowVirtualConsult(false);
+      setCurrentQuestion(0);
+      setConsultAnswers({});
+    }
+  };
+
+  const resetVirtualConsult = () => {
+    setCurrentQuestion(0);
+    setConsultAnswers({});
+  };
+
+  const handleCalculatorSubmit = () => {
+    let result = '';
+    
+    switch (calculatorType) {
+      case 'appointment':
+        if (calculatorInputs.lastAppointment) {
+          const lastDate = new Date(calculatorInputs.lastAppointment);
+          const nextDate = hairCareCalculator.calculateNextAppointment(lastDate, calculatorInputs.serviceType);
+          result = `Próximo ${calculatorInputs.serviceType}: ${nextDate.toLocaleDateString('pt-BR')}`;
+        }
+        break;
+      case 'growth':
+        const growth = hairCareCalculator.calculateHairGrowth(calculatorInputs.weeks);
+        result = `Em ${calculatorInputs.weeks} semanas seu cabelo crescerá aproximadamente ${growth}cm`;
+        break;
+      case 'schedule':
+        const schedule = hairCareCalculator.recommendSchedule(calculatorInputs.hairType, calculatorInputs.hasChemical);
+        result = `Hidratação: ${schedule.hydration}, Nutrição: ${schedule.nutrition}, Reconstrução: ${schedule.reconstruction}. ${schedule.note}`;
+        break;
+    }
+    
+    toast({
+      title: "Resultado da Calculadora",
+      description: result,
+      duration: 8000,
+    });
+  };
+
+  const getCurrentSeason = () => {
+    const month = new Date().getMonth();
+    return (month >= 11 || month <= 2) ? "Inverno" : "Verão";
+  };
+
+  const addReminder = (type: string, days: number, notes: string) => {
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + days);
+    
+    personalizedReminders.setReminder(type, futureDate, notes);
+    setUserReminders(personalizedReminders.getUpcomingReminders());
+    
+    toast({
+      title: "Lembrete Criado!",
+      description: `Lembrete para ${type} em ${days} dias`,
+    });
   };
 
   const downloadGuide = (guide: typeof hairCareGuides[0]) => {
@@ -768,6 +1074,123 @@ Espaço Sil - Sua beleza é nossa arte
           {filteredServices.length === 0 && (
             <div className="text-center py-12">
               <p className="text-gray-500 dark:text-gray-400">Nenhum serviço encontrado com os filtros aplicados.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Interactive Tools Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 fade-in">
+            <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">Ferramentas Interativas</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300">Recursos para cuidar melhor dos seus cabelos</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Hair Calculator */}
+            <Card 
+              className="fade-in hover:shadow-xl transition-all duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 group"
+              onClick={() => setShowCalculator(true)}
+            >
+              <CardContent className="p-6 text-center">
+                <Calculator className="text-3xl text-blue-600 mb-4 mx-auto group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-semibold mb-2 dark:text-white">Calculadora Capilar</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Calcule crescimento, próximos agendamentos e cronogramas</p>
+              </CardContent>
+            </Card>
+
+            {/* Virtual Consultation */}
+            <Card 
+              className="fade-in hover:shadow-xl transition-all duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 group"
+              onClick={() => setShowVirtualConsult(true)}
+            >
+              <CardContent className="p-6 text-center">
+                <MessageSquare className="text-3xl text-green-600 mb-4 mx-auto group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-semibold mb-2 dark:text-white">Consulta Virtual</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Receba recomendações personalizadas</p>
+              </CardContent>
+            </Card>
+
+            {/* Emergency Kit */}
+            <Card 
+              className="fade-in hover:shadow-xl transition-all duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 group"
+              onClick={() => setShowEmergencyKit(true)}
+            >
+              <CardContent className="p-6 text-center">
+                <AlertCircle className="text-3xl text-red-600 mb-4 mx-auto group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-semibold mb-2 dark:text-white">Kit Emergência</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Soluções rápidas para problemas capilares</p>
+              </CardContent>
+            </Card>
+
+            {/* Seasonal Tips */}
+            <Card 
+              className="fade-in hover:shadow-xl transition-all duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 group"
+              onClick={() => setShowSeasonalTips(true)}
+            >
+              <CardContent className="p-6 text-center">
+                <Sun className="text-3xl text-yellow-600 mb-4 mx-auto group-hover:scale-110 transition-transform" />
+                <h3 className="text-lg font-semibold mb-2 dark:text-white">Dicas Sazonais</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Cuidados específicos para cada estação</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Interactive Tutorials */}
+          <div className="mt-16">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-8 text-center">Tutoriais Interativos</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {interactiveTutorials.map((tutorial) => (
+                <Card 
+                  key={tutorial.id}
+                  className="fade-in hover:shadow-xl transition-all duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700"
+                  onClick={() => setShowTutorial(tutorial)}
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <PlayCircle className="text-2xl text-purple-600" />
+                      <div className="flex space-x-2">
+                        <Badge variant="outline">{tutorial.difficulty}</Badge>
+                        <Badge variant="secondary">{tutorial.duration}</Badge>
+                      </div>
+                    </div>
+                    <h4 className="text-lg font-semibold mb-2 dark:text-white">{tutorial.title}</h4>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">{tutorial.steps.length} passos simples</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Personal Reminders */}
+          {userReminders.length > 0 && (
+            <div className="mt-16 max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Seus Lembretes</h3>
+              <div className="space-y-4">
+                {userReminders.slice(0, 3).map((reminder, index) => (
+                  <Card key={index} className="dark:bg-gray-800 dark:border-gray-700">
+                    <CardContent className="p-4 flex items-center justify-between">
+                      <div>
+                        <h4 className="font-semibold dark:text-white">{reminder.type}</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                          {new Date(reminder.date).toLocaleDateString('pt-BR')} - {reminder.notes}
+                        </p>
+                      </div>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          personalizedReminders.completeReminder(reminder.id);
+                          setUserReminders(personalizedReminders.getUpcomingReminders());
+                          toast({ title: "Lembrete marcado como concluído!" });
+                        }}
+                      >
+                        <CheckCircle className="h-4 w-4" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -1279,6 +1702,351 @@ Espaço Sil - Sua beleza é nossa arte
           </div>
         </div>
       </footer>
+
+      {/* Calculator Modal */}
+      <Modal
+        isOpen={showCalculator}
+        onClose={() => setShowCalculator(false)}
+        title="Calculadora Capilar"
+      >
+        <div className="space-y-6">
+          <div className="flex space-x-2">
+            <Button
+              variant={calculatorType === 'appointment' ? 'default' : 'outline'}
+              onClick={() => setCalculatorType('appointment')}
+              className="flex-1"
+            >
+              <Calendar className="h-4 w-4 mr-2" />
+              Próximo Agendamento
+            </Button>
+            <Button
+              variant={calculatorType === 'growth' ? 'default' : 'outline'}
+              onClick={() => setCalculatorType('growth')}
+              className="flex-1"
+            >
+              <TrendingUp className="h-4 w-4 mr-2" />
+              Crescimento
+            </Button>
+            <Button
+              variant={calculatorType === 'schedule' ? 'default' : 'outline'}
+              onClick={() => setCalculatorType('schedule')}
+              className="flex-1"
+            >
+              <Clock className="h-4 w-4 mr-2" />
+              Cronograma
+            </Button>
+          </div>
+
+          {calculatorType === 'appointment' && (
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Último agendamento:</label>
+                <Input
+                  type="date"
+                  value={calculatorInputs.lastAppointment}
+                  onChange={(e) => setCalculatorInputs({...calculatorInputs, lastAppointment: e.target.value})}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Tipo de serviço:</label>
+                <select
+                  value={calculatorInputs.serviceType}
+                  onChange={(e) => setCalculatorInputs({...calculatorInputs, serviceType: e.target.value})}
+                  className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-600"
+                >
+                  <option value="corte">Corte</option>
+                  <option value="coloracao">Coloração</option>
+                  <option value="progressiva">Progressiva</option>
+                  <option value="hidratacao">Hidratação</option>
+                  <option value="sobrancelha">Sobrancelha</option>
+                  <option value="manicure">Manicure</option>
+                </select>
+              </div>
+            </div>
+          )}
+
+          {calculatorType === 'growth' && (
+            <div>
+              <label className="block text-sm font-medium mb-2">Quantas semanas?</label>
+              <Input
+                type="number"
+                min="1"
+                max="52"
+                value={calculatorInputs.weeks}
+                onChange={(e) => setCalculatorInputs({...calculatorInputs, weeks: parseInt(e.target.value)})}
+              />
+            </div>
+          )}
+
+          {calculatorType === 'schedule' && (
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Tipo de cabelo:</label>
+                <select
+                  value={calculatorInputs.hairType}
+                  onChange={(e) => setCalculatorInputs({...calculatorInputs, hairType: e.target.value})}
+                  className="w-full px-3 py-2 border rounded-md dark:bg-gray-800 dark:border-gray-600"
+                >
+                  <option value="normal">Normal</option>
+                  <option value="oleoso">Oleoso</option>
+                  <option value="seco">Seco</option>
+                  <option value="misto">Misto</option>
+                </select>
+              </div>
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="hasChemical"
+                  checked={calculatorInputs.hasChemical}
+                  onChange={(e) => setCalculatorInputs({...calculatorInputs, hasChemical: e.target.checked})}
+                />
+                <label htmlFor="hasChemical" className="text-sm">Fez química recentemente</label>
+              </div>
+            </div>
+          )}
+
+          <Button onClick={handleCalculatorSubmit} className="w-full">
+            <Calculator className="h-4 w-4 mr-2" />
+            Calcular
+          </Button>
+        </div>
+      </Modal>
+
+      {/* Virtual Consultation Modal */}
+      <Modal
+        isOpen={showVirtualConsult}
+        onClose={() => setShowVirtualConsult(false)}
+        title="Consulta Virtual"
+      >
+        <div className="space-y-6">
+          {currentQuestion < virtualConsultation.questions.length ? (
+            <>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-500">
+                  Pergunta {currentQuestion + 1} de {virtualConsultation.questions.length}
+                </span>
+                <Button variant="ghost" size="sm" onClick={resetVirtualConsult}>
+                  <RefreshCw className="h-4 w-4" />
+                </Button>
+              </div>
+              
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div 
+                  className="bg-purple-600 h-2 rounded-full transition-all duration-300"
+                  style={{width: `${((currentQuestion + 1) / virtualConsultation.questions.length) * 100}%`}}
+                ></div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold mb-4">
+                  {virtualConsultation.questions[currentQuestion].question}
+                </h3>
+                <div className="grid grid-cols-1 gap-3">
+                  {virtualConsultation.questions[currentQuestion].options.map((option) => (
+                    <Button
+                      key={option}
+                      variant="outline"
+                      className="justify-start h-auto py-3 px-4"
+                      onClick={() => handleVirtualConsultAnswer(option)}
+                    >
+                      {option}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="text-center">
+              <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold mb-2">Consulta Concluída!</h3>
+              <p className="text-gray-600 mb-4">Confira suas recomendações nas notificações.</p>
+              <Button 
+                onClick={() => {
+                  setShowVirtualConsult(false);
+                  setCurrentQuestion(0);
+                  setConsultAnswers({});
+                }}
+                className="w-full"
+              >
+                Agendar Consulta Presencial
+              </Button>
+            </div>
+          )}
+        </div>
+      </Modal>
+
+      {/* Emergency Kit Modal */}
+      <Modal
+        isOpen={showEmergencyKit}
+        onClose={() => setShowEmergencyKit(false)}
+        title="Kit Emergência Capilar"
+      >
+        <div className="space-y-4">
+          {hairEmergencyKit.map((item, index) => (
+            <Card key={index} className="dark:bg-gray-800 dark:border-gray-700">
+              <CardContent className="p-4">
+                <div className="flex items-start space-x-3">
+                  <item.icon className="h-6 w-6 text-red-500 mt-1 flex-shrink-0" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-gray-800 dark:text-white mb-1">{item.problem}</h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">{item.solution}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+          <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
+            <div className="flex items-start space-x-2">
+              <AlertCircle className="h-5 w-5 text-yellow-600 mt-0.5" />
+              <div>
+                <h4 className="font-semibold text-yellow-800 dark:text-yellow-200">Atenção!</h4>
+                <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                  Estas são soluções temporárias. Para problemas persistentes, agende uma consulta.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Seasonal Tips Modal */}
+      <Modal
+        isOpen={showSeasonalTips}
+        onClose={() => setShowSeasonalTips(false)}
+        title={`Dicas para o ${getCurrentSeason()}`}
+      >
+        <div className="space-y-6">
+          {seasonalTips
+            .filter(tip => tip.season === getCurrentSeason())
+            .map((seasonTip, index) => (
+              <div key={index}>
+                <div className="flex items-center space-x-3 mb-4">
+                  <seasonTip.icon className="h-8 w-8 text-orange-500" />
+                  <h3 className="text-xl font-semibold dark:text-white">{seasonTip.season}</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-gray-800 dark:text-white mb-2">Dicas Essenciais:</h4>
+                    <ul className="space-y-2">
+                      {seasonTip.tips.map((tip, tipIndex) => (
+                        <li key={tipIndex} className="flex items-start space-x-2">
+                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-gray-600 dark:text-gray-300">{tip}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-gray-800 dark:text-white mb-2">Produtos Recomendados:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {seasonTip.products.map((product, productIndex) => (
+                        <Badge key={productIndex} variant="outline">{product}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </Modal>
+
+      {/* Tutorial Modal */}
+      <Modal
+        isOpen={showTutorial !== null}
+        onClose={() => {
+          setShowTutorial(null);
+          setCurrentTutorialStep(0);
+        }}
+        title={showTutorial?.title || ""}
+      >
+        {showTutorial && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div className="flex space-x-2">
+                <Badge variant="outline">{showTutorial.difficulty}</Badge>
+                <Badge variant="secondary">{showTutorial.duration}</Badge>
+              </div>
+              <span className="text-sm text-gray-500">
+                Passo {currentTutorialStep + 1} de {showTutorial.steps.length}
+              </span>
+            </div>
+            
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div 
+                className="bg-purple-600 h-2 rounded-full transition-all duration-300"
+                style={{width: `${((currentTutorialStep + 1) / showTutorial.steps.length) * 100}%`}}
+              ></div>
+            </div>
+
+            <Card className="dark:bg-gray-800 dark:border-gray-700">
+              <CardContent className="p-6">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold">
+                    {currentTutorialStep + 1}
+                  </div>
+                  <h4 className="text-lg font-semibold dark:text-white">
+                    {showTutorial.steps[currentTutorialStep]}
+                  </h4>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="flex space-x-3">
+              <Button
+                variant="outline"
+                onClick={() => setCurrentTutorialStep(Math.max(0, currentTutorialStep - 1))}
+                disabled={currentTutorialStep === 0}
+                className="flex-1"
+              >
+                <ChevronLeft className="h-4 w-4 mr-2" />
+                Anterior
+              </Button>
+              
+              {currentTutorialStep < showTutorial.steps.length - 1 ? (
+                <Button
+                  onClick={() => setCurrentTutorialStep(currentTutorialStep + 1)}
+                  className="flex-1"
+                >
+                  Próximo
+                  <ChevronRight className="h-4 w-4 ml-2" />
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    toast({
+                      title: "Tutorial Concluído!",
+                      description: "Parabéns! Você completou o tutorial.",
+                    });
+                    setShowTutorial(null);
+                    setCurrentTutorialStep(0);
+                  }}
+                  className="flex-1"
+                >
+                  <CheckCircle className="h-4 w-4 mr-2" />
+                  Concluir
+                </Button>
+              )}
+            </div>
+
+            {/* Tips */}
+            {showTutorial.tips.length > 0 && (
+              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                <h5 className="font-semibold text-blue-800 dark:text-blue-200 mb-2">Dicas:</h5>
+                <ul className="space-y-1">
+                  {showTutorial.tips.map((tip, index) => (
+                    <li key={index} className="text-sm text-blue-700 dark:text-blue-300 flex items-start space-x-2">
+                      <Lightbulb className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                      <span>{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+      </Modal>
 
       {/* Service Modal */}
       <Modal

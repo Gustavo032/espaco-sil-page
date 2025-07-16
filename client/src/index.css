@@ -150,6 +150,126 @@
   }
   
   .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .bounce-in {
+    animation: bounceIn 0.8s ease-out;
+  }
+  
+  @keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  @keyframes slideUp {
+    0% { transform: translateY(100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .glow-effect:hover {
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .glass-effect {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .typing-effect::after {
+    content: '|';
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  .sparkle-animation {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sparkle-animation::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: sparkle 3s linear infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes sparkle {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(360deg); }
+  }
+  
+  .morphing-border {
+    position: relative;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+    background-size: 200% 200%;
+    animation: morphBorder 3s ease-in-out infinite;
+  }
+  
+  @keyframes morphBorder {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .interactive-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .interactive-hover:hover {
+    transform: translateY(-5px) rotateY(5deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+  
+  .progress-ring {
+    transform: rotate(-90deg);
+  }
+  
+  .progress-ring-circle {
+    transition: stroke-dashoffset 0.35s;
+    transform-origin: 50% 50%;
+  }
+  
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: 200px 0; }
+  }
     background: linear-gradient(135deg, #4a148c, #9575cd);
     -webkit-background-clip: text;
     background-clip: text;
