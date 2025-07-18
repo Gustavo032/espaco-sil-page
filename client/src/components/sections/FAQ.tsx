@@ -234,7 +234,7 @@ export function FAQ() {
             </p>
             <Button 
               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
-              onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
+              onClick={() => window.open('https://wa.me/5511965919937', '_blank')}
             >
               Entrar em Contato
             </Button>

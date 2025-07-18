@@ -34,18 +34,18 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
             >
               Serviços
             </button>
-            <button 
+            {/* <button 
               onClick={() => scrollToSection('guias')}
               className="text-white hover:text-purple-300 transition-colors text-sm"
             >
               Guias
-            </button>
-            <button 
+            </button> */}
+            {/* <button 
               onClick={() => scrollToSection('resultados')}
               className="text-white hover:text-purple-300 transition-colors text-sm"
             >
               Resultados
-            </button>
+            </button> */}
             <button 
               onClick={() => scrollToSection('depoimentos')}
               className="text-white hover:text-purple-300 transition-colors text-sm"
@@ -64,12 +64,12 @@ export function Header({ darkMode, setDarkMode, scrollToSection }: HeaderProps) 
             >
               Galeria
             </button>
-            <button 
+            {/* <button 
               onClick={() => scrollToSection('simulador')}
               className="text-white hover:text-purple-300 transition-colors text-sm"
             >
               Simulador
-            </button>
+            </button> */}
             <button 
               onClick={() => scrollToSection('faq')}
               className="text-white hover:text-purple-300 transition-colors text-sm"

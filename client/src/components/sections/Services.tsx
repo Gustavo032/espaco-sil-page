@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -97,6 +97,13 @@ export function Services({ onServiceSelect }: ServicesProps) {
   const [filterCategory, setFilterCategory] = useState("all");
   const [likedServices, setLikedServices] = useState<string[]>([]);
   const { toast } = useToast();
+  const [initialLoad, setInitialLoad] = useState(true);
+
+	useEffect(() => {
+	const timer = setTimeout(() => setInitialLoad(false), 1000); // ou 0, ou 500ms
+	return () => clearTimeout(timer);
+	}, []);
+
 
   const toggleLikeService = (serviceId: string) => {
     const newLikedServices = likedServices.includes(serviceId) 
@@ -180,13 +187,14 @@ export function Services({ onServiceSelect }: ServicesProps) {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredServices.map((service) => (
-            <Card 
-              key={service.id} 
-              className="service-card cursor-pointer fade-in hover:shadow-xl transition-all duration-300 dark:bg-gray-800 dark:border-gray-700 relative group"
-              onClick={() => onServiceSelect(service)}
-            >
-              <CardContent className="p-6 text-center">
+		{filteredServices.map((service) => (
+			<Card 
+			key={service.id} 
+			className={`service-card cursor-pointer hover:shadow-xl transition-all duration-300 dark:bg-gray-800 dark:border-gray-700 relative group ${initialLoad ? 'fade-in' : ''}`}
+			onClick={() => onServiceSelect(service)}
+			>
+			<CardContent className="p-6 text-center">
+
                 <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Button
                     variant="ghost"

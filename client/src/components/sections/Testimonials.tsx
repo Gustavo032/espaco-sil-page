@@ -8,12 +8,12 @@ const testimonials = [
   {
     name: "Larissa",
     text: "Meu cabelo nunca esteve tão lindo!",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b112b4df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
+    image: "https://jpimg.com.br/uploads/2022/10/saiba-como-identificar-e-cuidar-de-cada-tipo-de-cabelo.jpg"
   },
   {
     name: "Juliana",
     text: "O atendimento é impecável. Recomendo!",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
+    image: "https://jpimg.com.br/uploads/2022/10/saiba-como-identificar-e-cuidar-de-cada-tipo-de-cabelo.jpg"
   },
   {
     name: "Camila",
@@ -48,7 +48,7 @@ export function Testimonials({
   }, [setCurrentTestimonial, testimonials.length]);
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section className="py-20 bg-gray-50 dark:bg-gray-900" id="depoimentos">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 fade-in">
           <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">Depoimentos</h2>

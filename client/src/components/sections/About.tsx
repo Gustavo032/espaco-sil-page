@@ -3,7 +3,7 @@ import { Award } from "lucide-react";
 
 export function About() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section className="py-20 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 fade-in">

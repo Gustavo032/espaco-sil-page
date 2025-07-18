@@ -90,7 +90,7 @@ const testimonials = [
   {
     name: "Larissa",
     text: "Meu cabelo nunca esteve tão lindo!",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b112b4df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
+    image: "https://jpimg.com.br/uploads/2022/10/saiba-como-identificar-e-cuidar-de-cada-tipo-de-cabelo.jpg"
   },
   {
     name: "Juliana",
@@ -100,7 +100,7 @@ const testimonials = [
   {
     name: "Camila",
     text: "A Sil realmente entende de beleza.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=150&h=150"
+    image: "https://chatgpt.com/backend-api/public_content/enc/eyJpZCI6Im1fNjg3YTk4NjlkMmVjODE5MWJiODk1N2VmNGM5ZWFjMjY6ZmlsZV8wMDAwMDAwMGY2YTg2MWY1YmE1NDcyNjMwMTcxYWY1MiIsInRzIjoiNDg2OTA2IiwicCI6InB5aSIsInNpZyI6IjVjYTkyMGEyMWE5ZmZiZmFhMjljYzE0Yjc4MmFkN2Q4Mjc4ZTMwYWI2MjU5NDdkZTI1OGQ5MTY2OWU1NDllZDYiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsfQ=="
   }
 ];
 
@@ -772,7 +772,7 @@ const Home = () => {
 
       <BeforeAfterGallery />
 
-      <HairstyleSimulator />
+      {/* <HairstyleSimulator /> */}
 
       <FAQ />
 

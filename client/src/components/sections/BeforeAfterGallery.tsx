@@ -12,13 +12,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Eye, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { after, before } from "node:test";
 
 const beforeAfterGallery = [
   {
     id: "progressiva-1",
     service: "Progressiva",
-    before: "https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300",
-    after: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300",
+    before: "./images/prog/progantes.png",
+    after: "./images/prog/progdepois.png",
     description: "Transformação completa com progressiva",
     duration: "4 horas",
     client: "Maria S.",
@@ -27,8 +28,8 @@ const beforeAfterGallery = [
   {
     id: "coloracao-1",
     service: "Coloração",
-    before: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300",
-    after: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300",
+    before: "./images/coloration/colorantes.png",
+    after: "./images/coloration/colordepois.png",
     description: "Mudança radical de cor - tons dourados",
     duration: "3 horas",
     client: "Ana L.",
@@ -37,8 +38,8 @@ const beforeAfterGallery = [
   {
     id: "corte-1",
     service: "Corte",
-    before: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300",
-    after: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300",
+    before: "./images/long/longantes.png",
+	after: "./images/long/longdepois.png",
     description: "Corte moderno long bob com camadas",
     duration: "45 min",
     client: "Carla R.",
@@ -47,8 +48,8 @@ const beforeAfterGallery = [
   {
     id: "luzes-1",
     service: "Luzes",
-    before: "https://images.unsplash.com/photo-1594824985091-f6c0c8ce1bcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-    after: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+	before: "./images/luzes/luzesantes.png",
+	after: "./images/luzes/luzesdepois.png",
     description: "Luzes californianas com balayage",
     duration: "4 horas",
     client: "Júlia M.",
@@ -57,8 +58,8 @@ const beforeAfterGallery = [
   {
     id: "botox-1",
     service: "Botox Capilar",
-    before: "https://images.unsplash.com/photo-1616683693867-8fa0e472faf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-    after: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+	before: "./images/botox/botoxantes.png",
+	after: "./images/botox/botoxdepois.png",
     description: "Reconstrução e hidratação profunda",
     duration: "2 horas",
     client: "Letícia P.",
@@ -67,8 +68,8 @@ const beforeAfterGallery = [
   {
     id: "cachos-1",
     service: "Definição de Cachos",
-    before: "https://images.unsplash.com/photo-1605980607089-67de6f5e8b8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
-    after: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300",
+	before: "./images/cachos/cachosantes.png",
+	after: "./images/cachos/cachosdepois.png",
     description: "Finalização profissional para cachos",
     duration: "1.5 horas",
     client: "Beatriz S.",
@@ -135,7 +136,7 @@ export function BeforeAfterGallery() {
                       <img 
                         src={item.before} 
                         alt="Antes"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                       <div className="absolute top-2 left-2">
                         <Badge className="bg-red-500 text-white text-xs">ANTES</Badge>
@@ -145,7 +146,7 @@ export function BeforeAfterGallery() {
                       <img 
                         src={item.after} 
                         alt="Depois"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                       />
                       <div className="absolute top-2 right-2">
                         <Badge className="bg-green-500 text-white text-xs">DEPOIS</Badge>
@@ -198,7 +199,7 @@ export function BeforeAfterGallery() {
                             <img 
                               src={item.before} 
                               alt="Antes"
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain"
                             />
                             <div className="absolute top-2 left-2">
                               <Badge className="bg-red-500 text-white text-xs">ANTES</Badge>
@@ -208,7 +209,7 @@ export function BeforeAfterGallery() {
                             <img 
                               src={item.after} 
                               alt="Depois"
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain"
                             />
                             <div className="absolute top-2 right-2">
                               <Badge className="bg-green-500 text-white text-xs">DEPOIS</Badge>
@@ -283,7 +284,7 @@ export function BeforeAfterGallery() {
                           <img 
                             src={selectedItem.before} 
                             alt="Antes"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                           <div className="absolute top-4 left-4">
                             <Badge className="bg-red-500 text-white">ANTES</Badge>
@@ -293,7 +294,7 @@ export function BeforeAfterGallery() {
                           <img 
                             src={selectedItem.after} 
                             alt="Depois"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                           <div className="absolute top-4 right-4">
                             <Badge className="bg-green-500 text-white">DEPOIS</Badge>
@@ -310,7 +311,7 @@ export function BeforeAfterGallery() {
                         <img 
                           src={selectedItem.before} 
                           alt="Antes"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                         <div className="absolute top-4 left-4">
                           <Badge className="bg-red-500 text-white">ANTES</Badge>
@@ -323,7 +324,7 @@ export function BeforeAfterGallery() {
                         <img 
                           src={selectedItem.after} 
                           alt="Depois"
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
                         <div className="absolute top-4 left-4">
                           <Badge className="bg-green-500 text-white">DEPOIS</Badge>
